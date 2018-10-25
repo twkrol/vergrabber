@@ -1,0 +1,5 @@
+files:
+    outdir: data/
+    outfile: vergrabber.json
+    webdir: data/
+    
