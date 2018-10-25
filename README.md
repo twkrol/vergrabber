@@ -58,28 +58,27 @@ Every software product needs a custom python module to be included in vergrabber
 
 ## Server modules
 
-    Apache2
-    Linux kernel
-    MySQL Community Server
-    Nginx
-    OpenSSL
-    PHP
-    Symfony (PHP framework)
+- Apache2
+- Linux kernel
+- MySQL Community Server
+- Nginx
+- OpenSSL
+- PHP
+- Symfony (PHP framework)
 
 ## Client modules
 
-    Adobe Flash
-    Google Chrome
-    Microsoft Windows 10
-    Mozilla Firefox
-    Mozilla Thunderbird
-    OpenVPN
-    Oracle Java
-    TeamViewer
-    VeraCrypt
+- Adobe Flash
+- Google Chrome
+- Microsoft Windows 10
+- Mozilla Firefox
+- Mozilla Thunderbird
+- OpenVPN
+- Oracle Java
+- TeamViewer
+- VeraCrypt
 
 Contact me if you want to help creating modules for other software products. 
-
 
 # FAQ
 ## How it works?
