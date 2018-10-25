@@ -11,44 +11,45 @@ JSON formatted file
 
 ```json
 {
-"client": {
-	"Google Chrome": {
-		"57.0": {
-		"latest": true,
-		"product": "Google Chrome",
-		"stable": true,
-		"version": "57.0.2987.110",
-		"released": "2017-03-16",
-		"edition": "57.0"
-		}
+    "latest": {
+        "client": {
+            "Google Chrome": {
+                "latest": true,
+                "ends": "9999-12-31",
+                "version": "70.0.3538.77",
+                "released": "2018-10-24",
+                "stable": true,
+                "edition": "70.0",
+                "lts": null,
+                "product": "Google Chrome"
+            },
+            "Java": {
+                "latest": true,
+                "ends": "9999-12-31",
+                "version": "8.0.191",
+                "released": "2018-10-16",
+                "stable": true,
+                "edition": "8.0",
+                "lts": null,
+                "product": "Java"
+            },
+	    ...
 	},
-	"Mozilla Firefox": {...}
-},
-"server": {
-	"Apache2": {
-		"2.4": {
-		"latest": true,
-		"product": "Apache2",
-		"stable": true,
-		"version": "2.4.25",
-		"released": "2016-12-20",
-		"edition": "2.4"
-		},
-		"2.2": {
-		"latest": false,
-		"product": "Apache2",
-		"stable": true,
-		"version": "2.2.32",
-		"released": "2017-01-13",
-		"edition": "2.2"
-		}
-	},
-	"PHP": {...},
-	"MySQL": {...},
-	"Linux Kernel": {...},
-	"Nginx": {...},
-	"OpenSSL": {...}
-}
+	"server": {
+            "Nginx": {
+                "latest": true,
+                "ends": "9999-12-31",
+                "version": "1.15.5",
+                "released": "2018-10-02",
+                "stable": false,
+                "edition": "1.15",
+                "lts": null,
+                "product": "Nginx"
+            }, 
+	    ...
+	}
+    }
+    ...
 }
 ```
 
