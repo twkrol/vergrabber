@@ -1,13 +1,13 @@
 beautifulsoup4==4.6.1
 bs4==0.0.1
-certifi==2018.4.16
+certifi==2018.10.15
 cfscrape==1.9.5
 chardet==3.0.4
 html5lib==1.0.1
 idna==2.7
 pkg-resources==0.0.0
 PyYAML==3.13
-requests==2.19.1
+requests==2.20.0
 six==1.11.0
-urllib3==1.23
+urllib3==1.24
 webencodings==0.5.1
