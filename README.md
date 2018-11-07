@@ -1,4 +1,7 @@
 # vergrabber
+
+[![Join the chat at https://gitter.im/vergrabber/Lobby](https://badges.gitter.im/vergrabber/Lobby.svg)](https://gitter.im/vergrabber/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Vergrabber is the tool written to grab & publish version information of selected software packages.
 It produces the json file that can be further processed programmaticaly (eg. by automation tools).
 
