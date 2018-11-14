@@ -27,13 +27,19 @@ def getEditions(template):
 	template.latest = False
 
 	# Looking for releases
-	body = urllib.request.urlopen("https://www.teamviewer.com/pl/do-pobrania/windows/").read()
+	body = urllib.request.urlopen("https://www.teamviewer.com/en/download/windows/").read()
 	soup = BeautifulSoup(body, "html5lib")
 
 	#Windows
 	# szukamy tagu <p> z treścią rozpoczynającą się od 'v' np. <p>v13.2.2344</p>
-	found = soup.find_all("p", string=re.compile('^v'))[0]
-	release = found.get_text()[1:]
+	# found = soup.find_all("p", string=re.compile('^v'))[0]
+	# release = found.get_text()[1:]
+	
+	for tag in soup.div(class_="wpb_wrapper"):
+		regex = re.search('(\d+)\.(\d+)\.(\d+)', tag.get_text())
+		if regex:
+			release = regex.group()
+			break
 
 	# Getting release data
 	item = copy.copy(template)  # copy of Softver object
