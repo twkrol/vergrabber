@@ -20,10 +20,10 @@ def getEditions(template):
 	template.latest = False
 	maxver = 1507
 
-	# Looking for releases
-	body = urllib.request.urlopen("https://winrelinfo.blob.core.windows.net/winrelinfo/en-US.html").read()
+	# Looking for releases, source at https://docs.microsoft.com/en-us/windows/windows-10/release-information
+	body = urllib.request.urlopen("https://winreleaseinfoprod.blob.core.windows.net/winreleaseinfoprod/en-US.html").read()
 	soup = BeautifulSoup(body, "html5lib")
-	table = soup.find('table')
+	table = soup.find('div',{"id":"winrelinfo_container"}).find_next('table')
 	rows = table.find_all('tr')[1:]
 
 	for index, row in enumerate(rows, start=0):  # Python indexes start at zero
@@ -33,7 +33,8 @@ def getEditions(template):
 		item = copy.copy(template)  # copy of Softver object
 
 		# find release date
-		item.released = cols[2].get_text().strip().split('.')[0]
+		value = cols[4].get_text().strip().split('.')[0]
+		item.released = datetime.strptime(value, '%m/%d/%Y').date()
 
 		# find version
 		item.version = cols[3].get_text().strip()
@@ -51,6 +52,26 @@ def getEditions(template):
 	for item in result:
 		if item.edition == str(maxver):
 			item.latest = True
+
+	# Looking for end support date, source at https://support.microsoft.com/en-ca/help/13853/windows-lifecycle-fact-sheet
+	body = urllib.request.urlopen("https://support.microsoft.com/en-ca/help/13853/windows-lifecycle-fact-sheet").read()
+	soup = BeautifulSoup(body, "html5lib")
+	
+	# Data to be found in a script tag used by their angular function, not pure html; we get them all
+	script = str(soup.find_all("script"))
+
+	for item in result:
+		ver = item.edition	#ex. 1809
+
+		# find the beginning and end of the html'like table contents with version related dates
+		start = str(script).find("<td>Windows 10, version %s</td>" % ver)
+		end = script.find("</tr>", start)
+		extracted =script[start-12:end+5]
+
+		# get table cells then use appropriate cell	containg the end of support date
+		found = re.findall(r'<td>(.*?)</td>', extracted)
+		if len(found)>0:
+			item.ends = datetime.strptime(found[2], '%B %d, %Y').date()
 
 	return result
 
