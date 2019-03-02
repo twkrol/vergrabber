@@ -11,7 +11,7 @@ import vergrabber
 
 from datetime import datetime, date
 
-product = "7-ZIP"
+product = "7-Zip"
 user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46'
 
 def getEditions(template):
