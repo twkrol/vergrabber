@@ -2,8 +2,7 @@
 # Copyright (c) Florian Probst & Tomasz Krol tomek@kingu.pl
 """
 Module to grab the latest stable versions of 7-Zip (7-zip.org)
-returns unstable versions (in a separate item) only if they are
-newer than the first stable version
+does not return unstable versions
 """
 import copy
 import re
@@ -44,19 +43,16 @@ def getEditions(template):
 			
 			# release date
 			releaseDate = regex.group(3)
-			item.released = datetime.strptime(releaseDate, '%Y-%m-%d').date()  # date format 24-Apr-2018
-			
-			# set release type
-			if x == 0:
-				item.latest = True
+			item.released = datetime.strptime(releaseDate, '%Y-%m-%d').date()
 			
 			if len(item.version) <= 5:
 				# we found a stable version
 				item.stable = True
+				item.latest = True
 				result.append(item)
 				# return immediately if first stable version has been found
 				return result
-			result.append(item)
+				
 	return result
 
 # fetches all version lines from the history file
