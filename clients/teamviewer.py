@@ -14,8 +14,22 @@ product = "TeamViewer"
 
 def getReleaseDate(edition):
 	# Looking for release date
-	# Not implemented yet - lack info on release page
-	return date.min
+
+	# Looking for release's changelog url
+	body = urllib.request.urlopen("https://community.teamviewer.com/t5/Change-Log-Windows/bd-p/Change_Log_Windows").read()
+	soup = BeautifulSoup(body, "html5lib")
+	chlogurl = soup.find("a", href=re.compile(edition))
+
+	# Looking for release date in changelog
+	body = urllib.request.urlopen("https://community.teamviewer.com/" + chlogurl['href']).read()
+	soup = BeautifulSoup(body, "html5lib")
+
+	value = soup.find("strong", string="Release date:").find_parent()
+	value = re.search('\d+\-\d+\-\d+', value.get_text())
+
+	result = datetime.strptime(value.group(), '%Y-%m-%d').date()  # date format example: 2019-03-23
+
+	return result
 
 
 def getEditions(template):
@@ -31,15 +45,9 @@ def getEditions(template):
 	soup = BeautifulSoup(body, "html5lib")
 
 	#Windows
-	# szukamy tagu <p> z treścią rozpoczynającą się od 'v' np. <p>v13.2.2344</p>
-	# found = soup.find_all("p", string=re.compile('^v'))[0]
-	# release = found.get_text()[1:]
-	
-	for tag in soup.div(class_="wpb_wrapper"):
-		regex = re.search('(\d+)\.(\d+)\.(\d+)', tag.get_text())
-		if regex:
-			release = regex.group()
-			break
+	# Looking for tag with content of 3 digits blocks eg. <p> 13.2.2344 ...
+	found = soup.find(string=re.compile('\d+\.\d+\.\d+'))
+	release = found.lstrip()
 
 	# Getting release data
 	item = copy.copy(template)  # copy of Softver object
