@@ -34,7 +34,7 @@ def getEditions(template):
 
 		# find release date
 		value = cols[4].get_text().strip().split('.')[0]
-		item.released = datetime.strptime(value, '%m/%d/%Y').date()
+		item.released = datetime.strptime(value, '%Y-%m-%d').date()
 
 		# find version
 		item.version = cols[3].get_text().strip()
