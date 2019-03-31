@@ -1,570 +1,603 @@
 {
-    "latest": {
-        "client": {
-            "Google Chrome": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "70.0.3538.77",
-                "released": "2018-10-24",
-                "stable": true,
-                "edition": "70.0",
-                "lts": null,
-                "product": "Google Chrome"
-            },
-            "VeraCrypt": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "1.23",
-                "released": "2018-12-09",
-                "stable": true,
-                "edition": "1",
-                "lts": null,
-                "product": "VeraCrypt"
-            },
-            "Java": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "8.0.191",
-                "released": "2018-10-16",
-                "stable": true,
-                "edition": "8.0",
-                "lts": null,
-                "product": "Java"
-            },
-            "Microsoft Windows 10": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "17763.55",
-                "released": "10/2/2018",
-                "stable": true,
-                "edition": "1809",
-                "lts": null,
-                "product": "Microsoft Windows 10"
-            },
-            "Mozilla Firefox": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "63.0",
-                "released": "2018-10-23",
-                "stable": true,
-                "edition": "63.0",
-                "lts": null,
-                "product": "Mozilla Firefox"
-            },
-            "Mozilla Thunderbird": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "60.2.1",
-                "released": "2018-10-02",
-                "stable": true,
-                "edition": "60.2",
-                "lts": null,
-                "product": "Mozilla Thunderbird"
-            },
-            "Adobe Flash Player": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "31.0.0.122",
-                "released": "2018-10-09",
-                "stable": true,
-                "edition": "31",
-                "lts": null,
-                "product": "Adobe Flash Player"
-            },
-            "TeamViewer": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "13.2.14327",
-                "released": "0001-01-01",
-                "stable": true,
-                "edition": "13.2",
-                "lts": null,
-                "product": "TeamViewer"
-            },
-            "OpenVPN": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "2.4.6",
-                "released": "2018-04-24",
-                "stable": true,
+    "signature": {
+        "app": "vergrabber",
+        "version": "3.1.5",
+        "author": "Tomasz Krol",
+        "notice": "If there is something broken or could be improved - please email me at vergrabber@kingu.pl",
+        "updated": "2019-03-03"
+    },
+    "server": {
+        "Apache2": {
+            "2.4": {
+                "product": "Apache2",
                 "edition": "2.4",
-                "lts": null,
-                "product": "OpenVPN"
+                "version": "2.4.38",
+                "stable": true,
+                "latest": true,
+                "released": "2019-01-22",
+                "ends": "9999-12-31",
+                "lts": null
             }
         },
-        "server": {
-            "Nginx": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "1.15.5",
-                "released": "2018-10-02",
-                "stable": false,
-                "edition": "1.15",
-                "lts": null,
-                "product": "Nginx"
-            },
-            "MySQL": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "8.0.13",
-                "released": "2018-10-22",
+        "Linux Kernel": {
+            "4.20": {
+                "product": "Linux Kernel",
+                "edition": "4.20",
+                "version": "4.20.13",
                 "stable": true,
+                "latest": true,
+                "released": "2019-02-27",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "4.19": {
+                "product": "Linux Kernel",
+                "edition": "4.19",
+                "version": "4.19.26",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-27",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "4.14": {
+                "product": "Linux Kernel",
+                "edition": "4.14",
+                "version": "4.14.104",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-27",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "4.9": {
+                "product": "Linux Kernel",
+                "edition": "4.9",
+                "version": "4.9.161",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-27",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "4.4": {
+                "product": "Linux Kernel",
+                "edition": "4.4",
+                "version": "4.4.176",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-23",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "3.18": {
+                "product": "Linux Kernel",
+                "edition": "3.18",
+                "version": "3.18.136",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-23",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "3.16": {
+                "product": "Linux Kernel",
+                "edition": "3.16",
+                "version": "3.16.63",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-11",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "MySQL": {
+            "8.0": {
+                "product": "MySQL",
                 "edition": "8.0",
-                "lts": null,
-                "product": "MySQL"
-            },
-            "PHP": {
-                "latest": true,
-                "ends": "2020-11-30",
-                "version": "7.2.11",
-                "released": "2017-11-30",
+                "version": "8.0.15",
                 "stable": true,
+                "latest": true,
+                "released": "2019-02-01",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "5.7": {
+                "product": "MySQL",
+                "edition": "5.7",
+                "version": "5.7.25",
+                "stable": true,
+                "latest": false,
+                "released": "2019-01-21",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "5.6": {
+                "product": "MySQL",
+                "edition": "5.6",
+                "version": "5.6.43",
+                "stable": true,
+                "latest": false,
+                "released": "2019-01-21",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "5.5": {
+                "product": "MySQL",
+                "edition": "5.5",
+                "version": "5.5.62",
+                "stable": true,
+                "latest": false,
+                "released": "2018-10-22",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "Nginx": {
+            "1.15": {
+                "product": "Nginx",
+                "edition": "1.15",
+                "version": "1.15.9",
+                "stable": false,
+                "latest": true,
+                "released": "2019-02-26",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "1.14": {
+                "product": "Nginx",
+                "edition": "1.14",
+                "version": "1.14.2",
+                "stable": true,
+                "latest": false,
+                "released": "2018-12-04",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "OpenSSL": {},
+        "PHP": {
+            "7.1": {
+                "product": "PHP",
+                "edition": "7.1",
+                "version": "7.1.26",
+                "stable": true,
+                "latest": false,
+                "released": "2016-12-01",
+                "ends": "2019-12-01",
+                "lts": null
+            },
+            "7.2": {
+                "product": "PHP",
                 "edition": "7.2",
-                "lts": null,
-                "product": "PHP"
-            },
-            "Symfony": {
-                "latest": true,
-                "ends": "2019-01-01",
-                "version": "4.1.6",
-                "released": "2018-05-01",
+                "version": "7.2.15",
                 "stable": true,
-                "edition": "4.1",
-                "lts": false,
-                "product": "Symfony"
+                "latest": false,
+                "released": "2017-11-30",
+                "ends": "2020-11-30",
+                "lts": null
             },
-            "Linux Kernel": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "4.18.16",
-                "released": "2018-10-20",
+            "7.3": {
+                "product": "PHP",
+                "edition": "7.3",
+                "version": "7.3.2",
                 "stable": true,
-                "edition": "4.18",
-                "lts": null,
-                "product": "Linux Kernel"
+                "latest": true,
+                "released": "2018-12-06",
+                "ends": "2021-12-06",
+                "lts": null
+            }
+        },
+        "Symfony": {
+            "3.4": {
+                "product": "Symfony",
+                "edition": "3.4",
+                "version": "3.4.22",
+                "stable": true,
+                "latest": false,
+                "released": "2017-11-01",
+                "ends": "2020-11-01",
+                "lts": true
             },
-            "Apache2": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "2.4.37",
-                "released": "2018-10-23",
+            "4.2": {
+                "product": "Symfony",
+                "edition": "4.2",
+                "version": "4.2.3",
                 "stable": true,
-                "edition": "2.4",
-                "lts": null,
-                "product": "Apache2"
-            },
-            "OpenSSL": {
                 "latest": true,
-                "ends": "2019-12-31",
-                "version": "1.0.2p",
-                "released": "2018-08-14",
-                "stable": true,
-                "edition": "1.0.2",
-                "lts": null,
-                "product": "OpenSSL"
+                "released": "2018-11-01",
+                "ends": "2019-07-01",
+                "lts": false
             }
         }
     },
     "client": {
         "Google Chrome": {
-            "70.0": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "70.0.3538.77",
-                "released": "2018-10-24",
+            "72.0": {
+                "product": "Google Chrome",
+                "edition": "72.0",
+                "version": "72.0.3626.121",
                 "stable": true,
-                "edition": "70.0",
-                "lts": null,
-                "product": "Google Chrome"
+                "latest": true,
+                "released": "2019-03-01",
+                "ends": "9999-12-31",
+                "lts": null
             }
         },
-        "VeraCrypt": {
-            "1": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "1.23",
-                "released": "2018-12-09",
+        "Mozilla Firefox": {
+            "60.5": {
+                "product": "Mozilla Firefox",
+                "edition": "60.5",
+                "version": "60.5.2",
                 "stable": true,
-                "edition": "1",
-                "lts": null,
-                "product": "VeraCrypt"
+                "latest": false,
+                "released": "2019-02-22",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "65.0": {
+                "product": "Mozilla Firefox",
+                "edition": "65.0",
+                "version": "65.0.2",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-28",
+                "ends": "9999-12-31",
+                "lts": null
             }
         },
         "Java": {
             "8.0": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "8.0.191",
-                "released": "2018-10-16",
-                "stable": true,
+                "product": "Java",
                 "edition": "8.0",
-                "lts": null,
-                "product": "Java"
-            }
-        },
-        "Microsoft Windows 10": {
-            "1803": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "17134.376",
-                "released": "4/30/2018",
+                "version": "8.0.201",
                 "stable": true,
-                "edition": "1803",
-                "lts": null,
-                "product": "Microsoft Windows 10"
-            },
-            "1607": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "14393.2580",
-                "released": "8/2/2016",
-                "stable": true,
-                "edition": "1607",
-                "lts": null,
-                "product": "Microsoft Windows 10"
-            },
-            "1709": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "16299.755",
-                "released": "10/17/2017",
-                "stable": true,
-                "edition": "1709",
-                "lts": null,
-                "product": "Microsoft Windows 10"
-            },
-            "1809": {
                 "latest": true,
+                "released": "2019-01-15",
                 "ends": "9999-12-31",
-                "version": "17763.55",
-                "released": "10/2/2018",
-                "stable": true,
-                "edition": "1809",
-                "lts": null,
-                "product": "Microsoft Windows 10"
-            },
-            "1507": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "10240.18005",
-                "released": "7/29/2015",
-                "stable": true,
-                "edition": "1507",
-                "lts": null,
-                "product": "Microsoft Windows 10"
-            },
-            "1703": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "15063.1418",
-                "released": "4/11/2017",
-                "stable": true,
-                "edition": "1703",
-                "lts": null,
-                "product": "Microsoft Windows 10"
-            }
-        },
-        "Mozilla Firefox": {
-            "60.3": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "60.3.0",
-                "released": "2018-10-23",
-                "stable": true,
-                "edition": "60.3",
-                "lts": null,
-                "product": "Mozilla Firefox"
-            },
-            "63.0": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "63.0",
-                "released": "2018-10-23",
-                "stable": true,
-                "edition": "63.0",
-                "lts": null,
-                "product": "Mozilla Firefox"
-            }
-        },
-        "Mozilla Thunderbird": {
-            "60.2": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "60.2.1",
-                "released": "2018-10-02",
-                "stable": true,
-                "edition": "60.2",
-                "lts": null,
-                "product": "Mozilla Thunderbird"
-            }
-        },
-        "Adobe Flash Player": {
-            "31": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "31.0.0.122",
-                "released": "2018-10-09",
-                "stable": true,
-                "edition": "31",
-                "lts": null,
-                "product": "Adobe Flash Player"
-            }
-        },
-        "TeamViewer": {
-            "13.2": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "13.2.14327",
-                "released": "0001-01-01",
-                "stable": true,
-                "edition": "13.2",
-                "lts": null,
-                "product": "TeamViewer"
+                "lts": null
             }
         },
         "OpenVPN": {
             "2.4": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "2.4.6",
-                "released": "2018-04-24",
-                "stable": true,
+                "product": "OpenVPN",
                 "edition": "2.4",
-                "lts": null,
-                "product": "OpenVPN"
+                "version": "2.4.7",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "TeamViewer": {
+            "14.1": {
+                "product": "TeamViewer",
+                "edition": "14.1",
+                "version": "14.1.9025",
+                "stable": true,
+                "latest": true,
+                "released": "0001-01-01",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "Mozilla Thunderbird": {
+            "60.5": {
+                "product": "Mozilla Thunderbird",
+                "edition": "60.5",
+                "version": "60.5.2",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-25",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "VeraCrypt": {
+            "1": {
+                "product": "VeraCrypt",
+                "edition": "1",
+                "version": "1.23-Hotfix-2",
+                "stable": true,
+                "latest": true,
+                "released": "2018-08-10",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "Microsoft Windows 10": {
+            "1809": {
+                "product": "Microsoft Windows 10",
+                "edition": "1809",
+                "version": "17763.348",
+                "stable": true,
+                "latest": true,
+                "released": "2019-03-01",
+                "ends": "2020-05-12",
+                "lts": null
+            },
+            "1803": {
+                "product": "Microsoft Windows 10",
+                "edition": "1803",
+                "version": "17134.619",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-19",
+                "ends": "2019-11-12",
+                "lts": null
+            },
+            "1709": {
+                "product": "Microsoft Windows 10",
+                "edition": "1709",
+                "version": "16299.1004",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-19",
+                "ends": "2019-04-09",
+                "lts": null
+            },
+            "1703": {
+                "product": "Microsoft Windows 10",
+                "edition": "1703",
+                "version": "15063.1659",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-19",
+                "ends": "2018-10-09",
+                "lts": null
+            },
+            "1607": {
+                "product": "Microsoft Windows 10",
+                "edition": "1607",
+                "version": "14393.2828",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-19",
+                "ends": "2018-04-10",
+                "lts": null
+            },
+            "1507": {
+                "product": "Microsoft Windows 10",
+                "edition": "1507",
+                "version": "10240.18135",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "7-Zip": {
+            "19.00": {
+                "product": "7-Zip",
+                "edition": "19.00",
+                "version": "19.00",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "Adobe Flash Player": {
+            "32": {
+                "product": "Adobe Flash Player",
+                "edition": "32",
+                "version": "32.0.0.142",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-12",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "Adobe Acrobat Reader": {
+            "DC 19": {
+                "product": "Adobe Acrobat Reader",
+                "edition": "DC 19",
+                "version": "19.010.20098",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "DC 17": {
+                "product": "Adobe Acrobat Reader",
+                "edition": "DC 17",
+                "version": "17.011.30127",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "DC 15": {
+                "product": "Adobe Acrobat Reader",
+                "edition": "DC 15",
+                "version": "15.006.30482",
+                "stable": true,
+                "latest": false,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
             }
         }
     },
-    "signature": {
-        "author": "Tomasz Krol",
-        "version": "3.1.3",
-        "updated": "2018-10-25",
-        "notice": "If there is something broken or could be improved - please email me at vergrabber@kingu.pl",
-        "app": "vergrabber"
-    },
-    "server": {
-        "Nginx": {
-            "1.14": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "1.14.0",
-                "released": "2018-04-17",
-                "stable": true,
-                "edition": "1.14",
-                "lts": null,
-                "product": "Nginx"
-            },
-            "1.15": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "1.15.5",
-                "released": "2018-10-02",
-                "stable": false,
-                "edition": "1.15",
-                "lts": null,
-                "product": "Nginx"
-            }
-        },
-        "MySQL": {
-            "8.0": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "8.0.13",
-                "released": "2018-10-22",
-                "stable": true,
-                "edition": "8.0",
-                "lts": null,
-                "product": "MySQL"
-            },
-            "5.5": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "5.5.62",
-                "released": "2018-10-22",
-                "stable": true,
-                "edition": "5.5",
-                "lts": null,
-                "product": "MySQL"
-            },
-            "5.6": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "5.6.42",
-                "released": "2018-10-22",
-                "stable": true,
-                "edition": "5.6",
-                "lts": null,
-                "product": "MySQL"
-            },
-            "5.7": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "5.7.24",
-                "released": "2018-10-22",
-                "stable": true,
-                "edition": "5.7",
-                "lts": null,
-                "product": "MySQL"
-            }
-        },
-        "PHP": {
-            "7.0": {
-                "latest": false,
-                "ends": "2018-12-03",
-                "version": "7.0.32",
-                "released": "2015-12-03",
-                "stable": true,
-                "edition": "7.0",
-                "lts": null,
-                "product": "PHP"
-            },
-            "5.6": {
-                "latest": false,
-                "ends": "2018-12-31",
-                "version": "5.6.38",
-                "released": "2014-08-28",
-                "stable": true,
-                "edition": "5.6",
-                "lts": null,
-                "product": "PHP"
-            },
-            "7.1": {
-                "latest": false,
-                "ends": "2019-12-01",
-                "version": "7.1.23",
-                "released": "2016-12-01",
-                "stable": true,
-                "edition": "7.1",
-                "lts": null,
-                "product": "PHP"
-            },
-            "7.2": {
-                "latest": true,
-                "ends": "2020-11-30",
-                "version": "7.2.11",
-                "released": "2017-11-30",
-                "stable": true,
-                "edition": "7.2",
-                "lts": null,
-                "product": "PHP"
-            }
-        },
-        "Symfony": {
-            "4.1": {
-                "latest": true,
-                "ends": "2019-01-01",
-                "version": "4.1.6",
-                "released": "2018-05-01",
-                "stable": true,
-                "edition": "4.1",
-                "lts": false,
-                "product": "Symfony"
-            },
-            "2.8": {
-                "latest": false,
-                "ends": "2018-11-01",
-                "version": "2.8.46",
-                "released": "2015-11-01",
-                "stable": true,
-                "edition": "2.8",
-                "lts": true,
-                "product": "Symfony"
-            },
-            "3.4": {
-                "latest": false,
-                "ends": "2020-11-01",
-                "version": "3.4.17",
-                "released": "2017-11-01",
-                "stable": true,
-                "edition": "3.4",
-                "lts": true,
-                "product": "Symfony"
-            }
-        },
-        "Linux Kernel": {
-            "3.16": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "3.16.60",
-                "released": "2018-10-21",
-                "stable": true,
-                "edition": "3.16",
-                "lts": null,
-                "product": "Linux Kernel"
-            },
-            "3.18": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "3.18.124",
-                "released": "2018-10-13",
-                "stable": true,
-                "edition": "3.18",
-                "lts": null,
-                "product": "Linux Kernel"
-            },
-            "4.14": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "4.14.78",
-                "released": "2018-10-20",
-                "stable": true,
-                "edition": "4.14",
-                "lts": null,
-                "product": "Linux Kernel"
-            },
-            "4.4": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "4.4.162",
-                "released": "2018-10-20",
-                "stable": true,
-                "edition": "4.4",
-                "lts": null,
-                "product": "Linux Kernel"
-            },
-            "4.9": {
-                "latest": false,
-                "ends": "9999-12-31",
-                "version": "4.9.135",
-                "released": "2018-10-20",
-                "stable": true,
-                "edition": "4.9",
-                "lts": null,
-                "product": "Linux Kernel"
-            },
-            "4.18": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "4.18.16",
-                "released": "2018-10-20",
-                "stable": true,
-                "edition": "4.18",
-                "lts": null,
-                "product": "Linux Kernel"
-            }
-        },
-        "Apache2": {
-            "2.4": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "2.4.37",
-                "released": "2018-10-23",
-                "stable": true,
+    "latest": {
+        "server": {
+            "Apache2": {
+                "product": "Apache2",
                 "edition": "2.4",
-                "lts": null,
-                "product": "Apache2"
+                "version": "2.4.38",
+                "stable": true,
+                "latest": true,
+                "released": "2019-01-22",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "Linux Kernel": {
+                "product": "Linux Kernel",
+                "edition": "4.20",
+                "version": "4.20.13",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-27",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "MySQL": {
+                "product": "MySQL",
+                "edition": "8.0",
+                "version": "8.0.15",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-01",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "Nginx": {
+                "product": "Nginx",
+                "edition": "1.15",
+                "version": "1.15.9",
+                "stable": false,
+                "latest": true,
+                "released": "2019-02-26",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "PHP": {
+                "product": "PHP",
+                "edition": "7.3",
+                "version": "7.3.2",
+                "stable": true,
+                "latest": true,
+                "released": "2018-12-06",
+                "ends": "2021-12-06",
+                "lts": null
+            },
+            "Symfony": {
+                "product": "Symfony",
+                "edition": "4.2",
+                "version": "4.2.3",
+                "stable": true,
+                "latest": true,
+                "released": "2018-11-01",
+                "ends": "2019-07-01",
+                "lts": false
             }
         },
-        "OpenSSL": {
-            "1.0.2": {
-                "latest": true,
-                "ends": "2019-12-31",
-                "version": "1.0.2p",
-                "released": "2018-08-14",
+        "client": {
+            "Google Chrome": {
+                "product": "Google Chrome",
+                "edition": "72.0",
+                "version": "72.0.3626.121",
                 "stable": true,
-                "edition": "1.0.2",
-                "lts": null,
-                "product": "OpenSSL"
+                "latest": true,
+                "released": "2019-03-01",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "Mozilla Firefox": {
+                "product": "Mozilla Firefox",
+                "edition": "65.0",
+                "version": "65.0.2",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-28",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "Java": {
+                "product": "Java",
+                "edition": "8.0",
+                "version": "8.0.201",
+                "stable": true,
+                "latest": true,
+                "released": "2019-01-15",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "OpenVPN": {
+                "product": "OpenVPN",
+                "edition": "2.4",
+                "version": "2.4.7",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "TeamViewer": {
+                "product": "TeamViewer",
+                "edition": "14.1",
+                "version": "14.1.9025",
+                "stable": true,
+                "latest": true,
+                "released": "0001-01-01",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "Mozilla Thunderbird": {
+                "product": "Mozilla Thunderbird",
+                "edition": "60.5",
+                "version": "60.5.2",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-25",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "VeraCrypt": {
+                "product": "VeraCrypt",
+                "edition": "1",
+                "version": "1.23-Hotfix-2",
+                "stable": true,
+                "latest": true,
+                "released": "2018-08-10",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "Microsoft Windows 10": {
+                "product": "Microsoft Windows 10",
+                "edition": "1809",
+                "version": "17763.348",
+                "stable": true,
+                "latest": true,
+                "released": "2019-03-01",
+                "ends": "2020-05-12",
+                "lts": null
+            },
+            "7-Zip": {
+                "product": "7-Zip",
+                "edition": "19.00",
+                "version": "19.00",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "Adobe Flash Player": {
+                "product": "Adobe Flash Player",
+                "edition": "32",
+                "version": "32.0.0.142",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-12",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "Adobe Acrobat Reader": {
+                "product": "Adobe Acrobat Reader",
+                "edition": "DC 19",
+                "version": "19.010.20098",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-21",
+                "ends": "9999-12-31",
+                "lts": null
             }
         }
     }
