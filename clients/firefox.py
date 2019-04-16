@@ -15,7 +15,8 @@ def getReleaseDate(version):
 	#Looking for release date
 	body = urllib.request.urlopen("https://www.mozilla.org/en-US/firefox/"+version+"/releasenotes/").read()
 	soup = BeautifulSoup(body, "html5lib")
-	value = soup.find('div', {'class':'version'}).find_next('p').get_text()
+	# value = soup.find('div', {'class':'c-release-version'}).find_next('p').get_text()
+	value = soup.find('p', {'class':'c-release-date'}).get_text()
 	result = datetime.strptime(value, '%B %d, %Y').date()			#date format example: March 7, 2017
 	return result
 
@@ -44,10 +45,7 @@ def getEditions(template):
 		item = copy.copy(template)									#copy of Softver object
 
 		#find release date
-		try:
-			item.released = getReleaseDate(release)
-		except:
-			continue
+		item.released = getReleaseDate(release)
 
 		#find version
 		value = release

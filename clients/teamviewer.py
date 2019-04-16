@@ -45,10 +45,10 @@ def getEditions(template):
 	soup = BeautifulSoup(body, "html5lib")
 
 	#Windows
-	# Looking for tag with content of 3 digits blocks eg. <p> 13.2.2344 ...
-	found = soup.find(string=re.compile('\d+\.\d+\.\d+'))
-	release = found.lstrip()
-
+	# Looking for tag with content of 3 digits blocks starting with tab eg. <tab>13.2.2344 ...
+	found = soup.find(string=re.compile('\t\d+\.\d+\.\d+'))
+	release = found.lstrip().rstrip()
+	
 	# Getting release data
 	item = copy.copy(template)  # copy of Softver object
 
