@@ -69,6 +69,8 @@ Every software product needs a custom python module to be included in vergrabber
 
 ## Client modules
 
+- 7-zip
+- Acrobat Reader
 - Adobe Flash
 - Google Chrome
 - Microsoft Windows 10
