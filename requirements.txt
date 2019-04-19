@@ -9,5 +9,5 @@ pkg-resources==0.0.0
 pyyaml>=4.2b1
 requests==2.20.0
 six==1.11.0
-urllib3==1.24
+urllib3>=1.24.2
 webencodings==0.5.1

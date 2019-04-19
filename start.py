@@ -10,7 +10,7 @@ import json
 from datetime import datetime, date
 import vergrabber
 
-__version__ = '3.1.7'
+__version__ = '3.1.8'
 __author__ = 'Tomasz Krol'
 __author_email__ = 'vergrabber@kingu.pl'
 
@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
     print("- loading configuration from config.yaml")
     with open(os.getcwd() + "/config.yaml", 'r') as confile:
-        config = yaml.load(confile)
+        config = yaml.full_load(confile)
 
     outdir = config['files']['outdir']
     outfile = config['files']['outfile']
