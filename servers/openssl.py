@@ -20,58 +20,61 @@ def getEditions(template):
 	template.ends = date.min
 
 	#Looking for releases
-	body = urllib.request.urlopen("https://www.openssl.org/policies/releasestrat.html").read()
-	soup = BeautifulSoup(body, "html5lib")
-	li = soup.find('div', {"class" : "entry-content"}).find_next("ul").find_all("li")
-	
-	for line in li:
-		value = line.get_text()
-
-		item = copy.copy(template)											#copy of Softver object
-		
-		temp = re.search('\d+\.\d+\.\d+',value)
-		if temp is not None:
-			item.edition = temp.group()
-		else:
-			continue
-		
-		temp = re.search('\d+-\d+-.\d+',value)
-		if temp is not None:
-			item.ends = datetime.strptime(temp.group(), '%Y-%m-%d').date()
-		else:
-			continue
-		
-		result.append(item)
-
-		
-		
-	#Looking for detailed release's versions (different url)
-	latest = True															#first found will be marked latest
+	max_ver = 0
 	body = urllib.request.urlopen("https://www.openssl.org/source/").read()
 	soup = BeautifulSoup(body, "html5lib")
-	tds = soup.find('div', {"class" : "entry-content"}).find_next("table").find_all("td")
+	trs = soup.find('div', {"class" : "entry-content"}).find_next("table").find_all("tr")
+
+	for tr in trs:
+		item = copy.copy(template)											#copy of Softver object
+		tds = tr.find_all("td")
+
+		raw_date = tds[1].get_text()
+		raw_file = tds[2].get_text()
 	
-	for td in tds:
-		value = td.get_text()
+		# skip header whis is in ordinary td's instead of th's :(
+		if raw_date.rstrip() == "Date":
+			continue
+
+		# get release date
+		temp_date = re.search('\d{4}-[a-zA-Z]{3}-\d{2}', raw_date)					#Looking for date
+		released = datetime.strptime(temp_date.group(), '%Y-%b-%d').date()
+	
+		# get version info
+		temp_ver = re.search('openssl-(\d+.\d+.\d+[a-z]).tar.gz', raw_file)			#Looking for openssl-x.x.xy release
+
+		# skip unregular releases
+		if temp_ver is None:
+			continue
 		
-		#get release date
-		temp = re.search('\d{4}-[a-zA-Z]{3}-\d{2}',value)					#Looking for date
-		if temp is not None:
-			released = datetime.strptime(temp.group(), '%Y-%b-%d').date()
-			
-		#get version info
-		temp = re.search('openssl-(\d+.\d+.\d+[a-z]).tar.gz',value)			#Looking for openssl-x.x.xy release
-		if temp is not None:
-			version = temp.group(1)
-			edition = re.search('\d+.\d+.\d+',version).group()				#Get edition from version
-			for item in result:
-				if item.edition == edition:
-					item.version = version									#Update editions with versions found
-					item.stable = True
-					item.latest = latest
-					item.released = released
-					latest = False
+		# get version
+		version = temp_ver.group(1)
 		
+		# ver_num = version.replace(".", "")
+		ver_num = int(re.sub("[a-z.]", "", version))
+		if ver_num > max_ver:
+			max_ver = ver_num
+
+		# get edition
+		edition = re.search('\d+.\d+.\d+',version).group()				#Get edition from version
+
+		# fill in the item
+		item.edition = edition
+		item.version = version									#Update editions with versions found
+		item.stable = True
+		item.latest = False
+		item.released = released
+		item.lts = ''
+
+		# print("released:%s, version:%s, edition:%s" % (released, version, edition))
+		result.append(item)
+
+		# find and mark latest version
+		for item in result:
+			ver_num = int(re.sub("[a-z.]", "", item.version))
+			if ver_num == max_ver:
+				item.latest = True
+	
 	return result
 
 # if __name__ == "__main__":

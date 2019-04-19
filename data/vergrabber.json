@@ -1,10 +1,10 @@
 {
     "signature": {
         "app": "vergrabber",
-        "version": "3.1.6",
+        "version": "3.1.7",
         "author": "Tomasz Krol",
         "notice": "If there is something broken or could be improved - please email me at vergrabber@kingu.pl",
-        "updated": "2019-04-16"
+        "updated": "2019-04-19"
     },
     "server": {
         "Apache2": {
@@ -23,50 +23,40 @@
             "5.0": {
                 "product": "Linux Kernel",
                 "edition": "5.0",
-                "version": "5.0.7",
+                "version": "5.0.8",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-05",
-                "ends": "9999-12-31",
-                "lts": null
-            },
-            "4.20": {
-                "product": "Linux Kernel",
-                "edition": "4.20",
-                "version": "4.20.17",
-                "stable": true,
-                "latest": true,
-                "released": "2019-03-19",
+                "released": "2019-04-17",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.19": {
                 "product": "Linux Kernel",
                 "edition": "4.19",
-                "version": "4.19.34",
+                "version": "4.19.35",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-05",
+                "released": "2019-04-17",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.14": {
                 "product": "Linux Kernel",
                 "edition": "4.14",
-                "version": "4.14.111",
+                "version": "4.14.112",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-05",
+                "released": "2019-04-17",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.9": {
                 "product": "Linux Kernel",
                 "edition": "4.9",
-                "version": "4.9.168",
+                "version": "4.9.169",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-05",
+                "released": "2019-04-17",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -155,7 +145,38 @@
                 "lts": null
             }
         },
-        "OpenSSL": {},
+        "OpenSSL": {
+            "1.0.2": {
+                "product": "OpenSSL",
+                "edition": "1.0.2",
+                "version": "1.0.2r",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-26",
+                "ends": "0001-01-01",
+                "lts": ""
+            },
+            "1.1.1": {
+                "product": "OpenSSL",
+                "edition": "1.1.1",
+                "version": "1.1.1b",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-26",
+                "ends": "0001-01-01",
+                "lts": ""
+            },
+            "1.1.0": {
+                "product": "OpenSSL",
+                "edition": "1.1.0",
+                "version": "1.1.0j",
+                "stable": true,
+                "latest": false,
+                "released": "2018-11-20",
+                "ends": "0001-01-01",
+                "lts": ""
+            }
+        },
         "PHP": {
             "7.1": {
                 "product": "PHP",
@@ -192,7 +213,7 @@
             "3.4": {
                 "product": "Symfony",
                 "edition": "3.4",
-                "version": "3.4.25",
+                "version": "3.4.26",
                 "stable": true,
                 "latest": false,
                 "released": "2017-11-01",
@@ -202,7 +223,7 @@
             "4.2": {
                 "product": "Symfony",
                 "edition": "4.2",
-                "version": "4.2.6",
+                "version": "4.2.7",
                 "stable": true,
                 "latest": true,
                 "released": "2018-11-01",
@@ -419,11 +440,11 @@
             },
             "Linux Kernel": {
                 "product": "Linux Kernel",
-                "edition": "4.20",
-                "version": "4.20.17",
+                "edition": "5.0",
+                "version": "5.0.8",
                 "stable": true,
                 "latest": true,
-                "released": "2019-03-19",
+                "released": "2019-04-17",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -447,6 +468,16 @@
                 "ends": "9999-12-31",
                 "lts": null
             },
+            "OpenSSL": {
+                "product": "OpenSSL",
+                "edition": "1.1.1",
+                "version": "1.1.1b",
+                "stable": true,
+                "latest": true,
+                "released": "2019-02-26",
+                "ends": "0001-01-01",
+                "lts": ""
+            },
             "PHP": {
                 "product": "PHP",
                 "edition": "7.3",
@@ -460,7 +491,7 @@
             "Symfony": {
                 "product": "Symfony",
                 "edition": "4.2",
-                "version": "4.2.6",
+                "version": "4.2.7",
                 "stable": true,
                 "latest": true,
                 "released": "2018-11-01",
