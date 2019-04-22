@@ -1,10 +1,10 @@
 {
     "signature": {
         "app": "vergrabber",
-        "version": "3.1.7",
+        "version": "3.1.8",
         "author": "Tomasz Krol",
         "notice": "If there is something broken or could be improved - please email me at vergrabber@kingu.pl",
-        "updated": "2019-04-19"
+        "updated": "2019-04-22"
     },
     "server": {
         "Apache2": {
@@ -23,40 +23,40 @@
             "5.0": {
                 "product": "Linux Kernel",
                 "edition": "5.0",
-                "version": "5.0.8",
+                "version": "5.0.9",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-17",
+                "released": "2019-04-20",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.19": {
                 "product": "Linux Kernel",
                 "edition": "4.19",
-                "version": "4.19.35",
+                "version": "4.19.36",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-17",
+                "released": "2019-04-20",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.14": {
                 "product": "Linux Kernel",
                 "edition": "4.14",
-                "version": "4.14.112",
+                "version": "4.14.113",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-17",
+                "released": "2019-04-20",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.9": {
                 "product": "Linux Kernel",
                 "edition": "4.9",
-                "version": "4.9.169",
+                "version": "4.9.170",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-17",
+                "released": "2019-04-20",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -153,8 +153,8 @@
                 "stable": true,
                 "latest": true,
                 "released": "2019-02-26",
-                "ends": "0001-01-01",
-                "lts": ""
+                "ends": "9999-12-31",
+                "lts": null
             },
             "1.1.1": {
                 "product": "OpenSSL",
@@ -163,8 +163,8 @@
                 "stable": true,
                 "latest": true,
                 "released": "2019-02-26",
-                "ends": "0001-01-01",
-                "lts": ""
+                "ends": "9999-12-31",
+                "lts": null
             },
             "1.1.0": {
                 "product": "OpenSSL",
@@ -173,8 +173,8 @@
                 "stable": true,
                 "latest": false,
                 "released": "2018-11-20",
-                "ends": "0001-01-01",
-                "lts": ""
+                "ends": "9999-12-31",
+                "lts": null
             }
         },
         "PHP": {
@@ -441,10 +441,10 @@
             "Linux Kernel": {
                 "product": "Linux Kernel",
                 "edition": "5.0",
-                "version": "5.0.8",
+                "version": "5.0.9",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-17",
+                "released": "2019-04-20",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -475,8 +475,8 @@
                 "stable": true,
                 "latest": true,
                 "released": "2019-02-26",
-                "ends": "0001-01-01",
-                "lts": ""
+                "ends": "9999-12-31",
+                "lts": null
             },
             "PHP": {
                 "product": "PHP",

@@ -4,40 +4,12 @@
 Helper library to process actual software versions of different kinds provided by modules
 """
 import glob
-import importlib
+import importlib.util
 from datetime import datetime, timedelta, date
+from pathlib import Path
 	
 modules = []
 editions = []
-
-# def getStableEditions(product):
-	# """ Return latest stable editions of given software
-	
-	# :param software: name of the software
-	# :return: Latest stable editions of given software
-	# :rtype: [Softver]
-	# """
-	# result = []
-	# for edition in editions:
-		# if edition.product == product and edition.stable:
-			# result.append(edition)
-	
-	# return(result)	
-
-# def getLatestEdition(product):
-	# """ Return latest edition & version of given software
-	
-	# :param software: name of the software
-	# :return: Latest edition of given software
-	# :rtype: Softver
-	# """
-	# #for mod in modules:
-		# # if(mod["outdated"])
-	# for edition in editions:
-		# if edition.product == product and edition.latest:
-			# return edition
-	
-	# return(None)	
 
 
 def addEdition(item):
@@ -54,10 +26,14 @@ def loadModules(folder = 'servers', name = None):
 	"""
 	del modules[:]
 	del editions[:]
+
 	pattern = '[!_]*' if name == None else name
-	for filename in glob.iglob(folder+'/'+ pattern +'.py'):
-		name = filename.replace(".py","").replace("/",".")
-		modules.append(importlib.import_module(name))
+	data_folder = Path(folder)
+
+	for filename in data_folder.glob(pattern + ".py"):
+		module = importlib.import_module(folder + "." + filename.stem)
+		modules.append(module)
+
 	return modules
 		
 		

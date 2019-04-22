@@ -17,7 +17,7 @@ def getEditions(template):
 	template.product = product
 	template.stable = True
 	template.released = date.max
-	template.ends = date.min
+	template.ends = date.max
 
 	#Looking for releases
 	max_ver = 0
@@ -64,7 +64,6 @@ def getEditions(template):
 		item.stable = True
 		item.latest = False
 		item.released = released
-		item.lts = ''
 
 		# print("released:%s, version:%s, edition:%s" % (released, version, edition))
 		result.append(item)

@@ -43,28 +43,11 @@ def getEditions(template):
 	item.version = a.get_text()
 	item.edition = re.search('\d+\.\d+',item.version).group()
 		
-	#value = soup.find('a', href=a['href']).find_next("span")	#find release date
-	#item.released = datetime.strptime(value.get_text(), '%Y-%m-%d').date()
 	value = re.search('(\d{4})[/.-](\d{2})[/.-](\d{2})',li.get_text()).group()
 	item.released = datetime.strptime(value, '%Y-%m-%d').date()
 
 	result.append(item)
-	
-
-	#Looking for legacy release
-	# item = copy.copy(template)									#copy of Softver object
-	# item.edition = "2.2"										#it is just hardcoded
-	# item.stable = True
-	# item.latest = False
-	#
-	# value = soup.find('a', href="#apache22")					#find version
-	# item.version = value.get_text()
-	#
-	# value = soup.find(id = "apache22").find_next("span")		#find release date
-	# item.released = value.get_text()
-    #
-	# result.append(item)
-		
+			
 	return result
 
 # if __name__ == "__main__":
