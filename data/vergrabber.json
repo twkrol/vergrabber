@@ -1,10 +1,10 @@
 {
     "signature": {
         "app": "vergrabber",
-        "version": "3.1.8",
+        "version": "3.2.0",
         "author": "Tomasz Krol",
         "notice": "If there is something broken or could be improved - please email me at vergrabber@kingu.pl",
-        "updated": "2019-04-22"
+        "updated": "2019-04-30"
     },
     "server": {
         "Apache2": {
@@ -23,60 +23,60 @@
             "5.0": {
                 "product": "Linux Kernel",
                 "edition": "5.0",
-                "version": "5.0.9",
+                "version": "5.0.10",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-20",
+                "released": "2019-04-27",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.19": {
                 "product": "Linux Kernel",
                 "edition": "4.19",
-                "version": "4.19.36",
+                "version": "4.19.37",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-20",
+                "released": "2019-04-27",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.14": {
                 "product": "Linux Kernel",
                 "edition": "4.14",
-                "version": "4.14.113",
+                "version": "4.14.114",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-20",
+                "released": "2019-04-27",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.9": {
                 "product": "Linux Kernel",
                 "edition": "4.9",
-                "version": "4.9.170",
+                "version": "4.9.171",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-20",
+                "released": "2019-04-27",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "4.4": {
                 "product": "Linux Kernel",
                 "edition": "4.4",
-                "version": "4.4.178",
+                "version": "4.4.179",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-03",
+                "released": "2019-04-27",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "3.18": {
                 "product": "Linux Kernel",
                 "edition": "3.18",
-                "version": "3.18.138",
+                "version": "3.18.139",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-03",
+                "released": "2019-04-27",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -95,30 +95,30 @@
             "8.0": {
                 "product": "MySQL",
                 "edition": "8.0",
-                "version": "8.0.15",
+                "version": "8.0.16",
                 "stable": true,
                 "latest": true,
-                "released": "2019-02-01",
+                "released": "2019-04-25",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "5.7": {
                 "product": "MySQL",
                 "edition": "5.7",
-                "version": "5.7.25",
+                "version": "5.7.26",
                 "stable": true,
                 "latest": false,
-                "released": "2019-01-21",
+                "released": "2019-04-25",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "5.6": {
                 "product": "MySQL",
                 "edition": "5.6",
-                "version": "5.6.43",
+                "version": "5.6.44",
                 "stable": true,
                 "latest": false,
-                "released": "2019-01-21",
+                "released": "2019-04-25",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -134,13 +134,13 @@
             }
         },
         "Nginx": {
-            "1.15": {
+            "1.16": {
                 "product": "Nginx",
-                "edition": "1.15",
-                "version": "1.15.12",
-                "stable": false,
+                "edition": "1.16",
+                "version": "1.16.0",
+                "stable": true,
                 "latest": true,
-                "released": "2019-04-16",
+                "released": "2019-04-23",
                 "ends": "9999-12-31",
                 "lts": null
             }
@@ -278,13 +278,13 @@
             }
         },
         "Google Chrome": {
-            "73.0": {
+            "74.0": {
                 "product": "Google Chrome",
-                "edition": "73.0",
-                "version": "73.0.3683.103",
+                "edition": "74.0",
+                "version": "74.0.3729.108",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-04",
+                "released": "2019-04-23",
                 "ends": "9999-12-31",
                 "lts": null
             }
@@ -318,7 +318,7 @@
                 "version": "32.0.0.171",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-09",
+                "released": "2019-04-25",
                 "ends": "9999-12-31",
                 "lts": null
             }
@@ -351,10 +351,10 @@
             "14.2": {
                 "product": "TeamViewer",
                 "edition": "14.2",
-                "version": "14.2.2558",
+                "version": "14.2.8352",
                 "stable": true,
                 "latest": true,
-                "released": "2019-03-19",
+                "released": "2019-04-16",
                 "ends": "9999-12-31",
                 "lts": null
             }
@@ -397,30 +397,30 @@
             "1803": {
                 "product": "Microsoft Windows 10",
                 "edition": "1803",
-                "version": "17134.706",
+                "version": "17134.753",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-09",
+                "released": "2019-04-25",
                 "ends": "2019-11-12",
                 "lts": null
             },
             "1709": {
                 "product": "Microsoft Windows 10",
                 "edition": "1709",
-                "version": "16299.1087",
+                "version": "16299.1127",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-09",
+                "released": "2019-04-25",
                 "ends": "2019-04-09",
                 "lts": null
             },
             "1703": {
                 "product": "Microsoft Windows 10",
                 "edition": "1703",
-                "version": "15063.1746",
+                "version": "15063.1784",
                 "stable": true,
                 "latest": false,
-                "released": "2019-04-09",
+                "released": "2019-04-25",
                 "ends": "2018-10-09",
                 "lts": null
             }
@@ -441,30 +441,30 @@
             "Linux Kernel": {
                 "product": "Linux Kernel",
                 "edition": "5.0",
-                "version": "5.0.9",
+                "version": "5.0.10",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-20",
+                "released": "2019-04-27",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "MySQL": {
                 "product": "MySQL",
                 "edition": "8.0",
-                "version": "8.0.15",
+                "version": "8.0.16",
                 "stable": true,
                 "latest": true,
-                "released": "2019-02-01",
+                "released": "2019-04-25",
                 "ends": "9999-12-31",
                 "lts": null
             },
             "Nginx": {
                 "product": "Nginx",
-                "edition": "1.15",
-                "version": "1.15.12",
-                "stable": false,
+                "edition": "1.16",
+                "version": "1.16.0",
+                "stable": true,
                 "latest": true,
-                "released": "2019-04-16",
+                "released": "2019-04-23",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -522,11 +522,11 @@
             },
             "Google Chrome": {
                 "product": "Google Chrome",
-                "edition": "73.0",
-                "version": "73.0.3683.103",
+                "edition": "74.0",
+                "version": "74.0.3729.108",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-04",
+                "released": "2019-04-23",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -546,7 +546,7 @@
                 "version": "32.0.0.171",
                 "stable": true,
                 "latest": true,
-                "released": "2019-04-09",
+                "released": "2019-04-25",
                 "ends": "9999-12-31",
                 "lts": null
             },
@@ -573,10 +573,10 @@
             "TeamViewer": {
                 "product": "TeamViewer",
                 "edition": "14.2",
-                "version": "14.2.2558",
+                "version": "14.2.8352",
                 "stable": true,
                 "latest": true,
-                "released": "2019-03-19",
+                "released": "2019-04-16",
                 "ends": "9999-12-31",
                 "lts": null
             },

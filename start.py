@@ -10,7 +10,7 @@ import json
 from datetime import datetime, date
 import vergrabber
 
-__version__ = '3.2.0'
+__version__ = '3.2.1'
 __author__ = 'Tomasz Krol'
 __author_email__ = 'vergrabber@kingu.pl'
 
@@ -54,7 +54,8 @@ if __name__ == "__main__":
 
     print("Vergrabber, a software version grabber", __version__)
     print("(C) 2017-2018 by", __author__, __author_email__, "\n")
-
+    started = datetime.now()
+    print("* STARTED @ %s" % started)
     print("- loading configuration from config.yaml")
     with open(os.getcwd() + "/config.yaml", 'r') as confile:
         config = yaml.full_load(confile)
@@ -133,4 +134,5 @@ if __name__ == "__main__":
     with open(webdir + outfile, 'w') as out:
         json.dump(result, out, default=dumper, indent=4)
 
-    print("* FINISHED *")
+    finished = datetime.now()
+    print("* FINISHED @ %s took %s" % (datetime.now(), finished-started))
