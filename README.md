@@ -11,46 +11,81 @@ JSON formatted file
 
 ```json
 {
+    "signature": {
+        "app": "vergrabber",
+        "version": "3.2.0",
+        "author": "Tomasz Krol",
+        "notice": "If there is something broken or could be improved - please email me at vergrabber@kingu.pl",
+        "updated": "2019-04-30"
+    },
     "latest": {
-        "client": {
-            "Google Chrome": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "70.0.3538.77",
-                "released": "2018-10-24",
+        "server": {
+            "Apache2": {
+                "product": "Apache2",
+                "edition": "2.4",
+                "version": "2.4.39",
                 "stable": true,
-                "edition": "70.0",
-                "lts": null,
-                "product": "Google Chrome"
+                "latest": true,
+                "released": "2019-04-01",
+                "ends": "9999-12-31",
+                "lts": null
             },
-            "Java": {
-                "latest": true,
-                "ends": "9999-12-31",
-                "version": "8.0.191",
-                "released": "2018-10-16",
+            "Linux Kernel": {
+                "product": "Linux Kernel",
+                "edition": "5.0",
+                "version": "5.0.10",
                 "stable": true,
+                "latest": true,
+                "released": "2019-04-27",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "MySQL": {
+                "product": "MySQL",
                 "edition": "8.0",
-                "lts": null,
-                "product": "Java"
-            },
-	    ...
-	},
-	"server": {
-            "Nginx": {
+                "version": "8.0.16",
+                "stable": true,
                 "latest": true,
+                "released": "2019-04-25",
                 "ends": "9999-12-31",
-                "version": "1.15.5",
-                "released": "2018-10-02",
-                "stable": false,
-                "edition": "1.15",
-                "lts": null,
-                "product": "Nginx"
+                "lts": null
+            },  
+	...
+    "server": {
+        "Apache2": {
+            "2.4": {
+                "product": "Apache2",
+                "edition": "2.4",
+                "version": "2.4.39",
+                "stable": true,
+                "latest": true,
+                "released": "2019-04-01",
+                "ends": "9999-12-31",
+                "lts": null
+            }
+        },
+        "Linux Kernel": {
+            "5.0": {
+                "product": "Linux Kernel",
+                "edition": "5.0",
+                "version": "5.0.10",
+                "stable": true,
+                "latest": true,
+                "released": "2019-04-27",
+                "ends": "9999-12-31",
+                "lts": null
+            },
+            "4.19": {
+                "product": "Linux Kernel",
+                "edition": "4.19",
+                "version": "4.19.37",
+                "stable": true,
+                "latest": false,
+                "released": "2019-04-27",
+                "ends": "9999-12-31",
+                "lts": null
             }, 
-	    ...
-	}
-    }
-    ...
-}
+	...
 ```
 
 # Current modules
