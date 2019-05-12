@@ -25,7 +25,7 @@ def getEditions(template):
 	for edition in editions:
 		item = copy.copy(template)											#copy of Softver object
 		item.stable = True
-		item.edition = editions[edition]
+		item.edition = edition
 
 		#Looking for detailed edition information from custom url
 		response = requests.get(url="https://symfony.com/roadmap/"+ item.edition +".json")
