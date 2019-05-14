@@ -10,6 +10,7 @@ from datetime import datetime, date
 from bs4 import BeautifulSoup
 
 product = "TeamViewer"
+user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46'
 
 
 def getReleaseDate(edition):
@@ -41,7 +42,11 @@ def getEditions(template):
 	template.latest = False
 
 	# Looking for releases
-	body = urllib.request.urlopen("https://www.teamviewer.com/en/download/windows/").read()
+	url = "https://www.teamviewer.com/en/download/windows/"
+	request = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent})
+
+	body = urllib.request.urlopen(request).read()
+	# body = urllib.request.urlopen("https://www.teamviewer.com/en/download/windows/").read()
 	soup = BeautifulSoup(body, "html5lib")
 
 	#Windows

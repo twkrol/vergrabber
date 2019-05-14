@@ -10,7 +10,7 @@ import json
 from datetime import datetime, date
 import vergrabber
 
-__version__ = '3.2.2'
+__version__ = '3.2.3'
 __author__ = 'Tomasz Krol'
 __author_email__ = 'vergrabber@kingu.pl'
 
