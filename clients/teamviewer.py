@@ -17,7 +17,9 @@ def getReleaseDate(edition):
 	# Looking for release date
 
 	# Looking for release's changelog url
-	body = urllib.request.urlopen("https://community.teamviewer.com/t5/Change-Log-Windows/bd-p/Change_Log_Windows").read()
+	url = "https://community.teamviewer.com/t5/forums/filteredbylabelpage/board-id/Change_Logs_EN/label-name/windows"
+	body = urllib.request.urlopen(url).read()
+
 	soup = BeautifulSoup(body, "html5lib")
 	chlogurl = soup.find("a", href=re.compile(edition))
 
