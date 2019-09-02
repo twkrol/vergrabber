@@ -24,14 +24,17 @@ def getReleaseDate(edition):
 	chlogurl = soup.find("a", href=re.compile(edition))
 
 	# Looking for release date in changelog
-	body = urllib.request.urlopen("https://community.teamviewer.com/" + chlogurl['href']).read()
-	soup = BeautifulSoup(body, "html5lib")
+	try:
+		body = urllib.request.urlopen("https://community.teamviewer.com/" + chlogurl['href']).read()
+		soup = BeautifulSoup(body, "html5lib")
 
-	value = soup.find("strong", string="Release date:").find_parent()
-	value = re.search('\d+\-\d+\-\d+', value.get_text())
+		value = soup.find("strong", string="Release date:").find_parent()
+		value = re.search('\d+\-\d+\-\d+', value.get_text())
 
-	result = datetime.strptime(value.group(), '%Y-%m-%d').date()  # date format example: 2019-03-23
-
+		result = datetime.strptime(value.group(), '%Y-%m-%d').date()  # date format example: 2019-03-23
+	except:
+		result = date.today()
+		
 	return result
 
 
