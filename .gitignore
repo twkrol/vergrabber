@@ -1,6 +1,6 @@
 __pycache__/
 *.pyc
-data/
+data/vergrabber.json
 .vscode/settings.json
 Pipfile.lock
 .vscode/launch.json
