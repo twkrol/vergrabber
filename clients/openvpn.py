@@ -19,7 +19,7 @@ def getReleaseDate(version):
 	body = urllib.request.urlopen(url).read()
 
 	soup = BeautifulSoup(body, "html5lib")
-	value = soup.find('a', href='openvpn-install-latest-stable.exe').next_sibling.strip().split(" ")[0]
+	value = soup.find('a', href='openvpn-latest-stable.tar.gz').next_sibling.strip().split(" ")[0]
 	result = datetime.strptime(value, '%d-%b-%Y').date()  # date format 24-Apr-2018
 	return result
 
