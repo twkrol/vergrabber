@@ -30,7 +30,10 @@ def getEditions(template):
 	release = h3.get_text().strip().split(" ")[4]
 	tvalue = h3.find('span')['title']
 
-	released = datetime.strptime(tvalue, '%m/%d/%Y %H:%M:%S %p').date()  # date format example: "07/09/2017 23:00:00 AM"
+	released = datetime.strptime(tvalue, '%d/%m/%Y %H:%M:%S %p').date()  # date format example: "07/09/2017 23:00:00 AM"
+	# One time year fix as there was error on the VeraCrypt title date
+	if released.year == 2018:
+		released = released.replace(year = released.year + 1)
 
 	# Getting release data
 	item = copy.copy(template)  # copy of Softver object

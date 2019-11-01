@@ -10,14 +10,14 @@ import json
 from datetime import datetime, date
 import vergrabber
 
-__version__ = '3.2.6'
+__version__ = '3.2.7'
 __author__ = 'Tomasz Krol'
 __author_email__ = 'vergrabber@kingu.pl'
 
 debug = False
 debug_module = None
 # debug = True
-# debug_module = 'symfony'
+# debug_module = 'veracrypt'
 
 def dumper(obj):
     if isinstance(obj, date) or isinstance(obj, datetime):
@@ -53,7 +53,7 @@ def applyLatest(result, branch, vergrabber):
 if __name__ == "__main__":
 
     print("Vergrabber, a software version grabber", __version__)
-    print("(C) 2017-2018 by", __author__, __author_email__, "\n")
+    print("(C) 2017-2019 by", __author__, __author_email__, "\n")
     started = datetime.now()
     print("* STARTED @ %s" % started)
     print("- loading configuration from config.yaml")
