@@ -1,14 +1,12 @@
 # -*- encoding: utf-8 -*-
 # Copyright (c) Florian Probst & Tomasz Krol tomek@kingu.pl
 """
-Module to grab the latest stable versions of LibreOffice for Windows 64 bit (libreoffice.org)
+Module to grab the latest "fresh" and "still" versions of LibreOffice for Windows (libreoffice.org)
 does not return unstable versions
 """
 import copy
 import re
 import urllib.request
-import sys
-sys.path.insert(1, '/home/obsti/git/vergrabber')
 import vergrabber
 
 
@@ -16,7 +14,7 @@ from datetime import datetime, date
 
 product = "LibreOffice"
 user_agent_stable = 'LibreOffice 6.2.1 (c9944f7-48b7ff5-0507789-54a4c8a-8b242a8; Windows; X86_64; )'
-user_agent_fresh = 'LibreOffice 6.2.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X86_64; )'
+user_agent_fresh = 'LibreOffice 6.3.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X86_64; )'
 url = 'http://update.libreoffice.org/check.php'
 
 """
@@ -36,7 +34,7 @@ curl -A "LibreOffice 6.2.1 (c9944f7-48b7ff5-0507789-54a4c8a-8b242a8; Windows; X8
 </inst:description>
 
 Fresh:
-curl -A "LibreOffice 6.2.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X86_64; )" "http://update.libreoffice.org/check.php"
+curl -A "LibreOffice 6.3.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X86_64; )" "http://update.libreoffice.org/check.php"
 <?xml version="1.0" encoding="utf-8"?>
 <inst:description xmlns:inst="http://update.libreoffice.org/description">
   <inst:id>LibreOffice 6.3.2</inst:id>
@@ -54,8 +52,6 @@ def getEditions(template):
 
     template.product = product
     template.ends = date.max
-    template.stable = False
-    template.latest = False
 
     # Looking for stable release
     request = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent_stable})
@@ -64,7 +60,10 @@ def getEditions(template):
     regex = re.search('<inst:version>(.*)</inst:version>', str(body))
     if regex != None:
         item.version = regex.group(1)
-        item.edition = "Still/Stable"
+        minorVersion = re.search('\d+\.\d+',item.version)
+        if minorVersion != None:
+            item.edition = minorVersion.group()
+
         item.stable = True
         item.latest = False
         item.released = ""
@@ -73,15 +72,17 @@ def getEditions(template):
     # Looking for fresh release
     request = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent_fresh})
     body = urllib.request.urlopen(request).read().decode()
-    item2 = copy.copy(template)  # copy of Softver object    
+    item = copy.copy(template)  # copy of Softver object    
     regex = re.search('<inst:version>(.*)</inst:version>', str(body))
     if regex != None:
-        item2.version = regex.group(1)
-        item2.edition = "Fresh"
-        item2.stable = False
-        item2.latest = True
-        item2.released = ""
-        result.append(item2)
+        item.version = regex.group(1)        
+        minorVersion = re.search('\d+\.\d+',item.version)
+        if minorVersion != None:
+            item.edition = minorVersion.group()
+        item.stable = False
+        item.latest = True
+        item.released = ""
+        result.append(item)
         
     return result
 
