@@ -8,6 +8,8 @@ import copy
 import re
 import urllib.request
 import vergrabber
+from bs4 import BeautifulSoup
+from datetime import datetime, date
 
 
 from datetime import datetime, date
@@ -16,6 +18,7 @@ product = "LibreOffice"
 user_agent_stable = 'LibreOffice 6.2.1 (c9944f7-48b7ff5-0507789-54a4c8a-8b242a8; Windows; X86_64; )'
 user_agent_fresh = 'LibreOffice 6.3.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X86_64; )'
 url = 'http://update.libreoffice.org/check.php'
+releases_url = "https://wiki.documentfoundation.org/ReleasePlan/"
 
 """
 get libreoffice webservice output manually:
@@ -47,6 +50,41 @@ curl -A "LibreOffice 6.3.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X
 </inst:description>
 """
 
+def getReleaseDates(item):
+    # Looking for release start and end dates
+    body = urllib.request.urlopen(releases_url+item.edition).read()
+    soup = BeautifulSoup(body, "html5lib")
+
+    # Get all tables from page
+    tables = soup.find_all('table')
+    for x in range(len(tables)):
+        ## tr, (th, td)
+        rows = tables[x].find_all('tr')
+        # release version info is always in last row
+        releaseRow = rows[len(rows)-1]
+        ths = releaseRow.find_all('th')
+        releaseString = ths[0].get_text()
+        tds = releaseRow.find_all('td')
+        release_date_string = tds[0].get_text()
+        
+        #releaseString.
+        if releaseString.startswith("Release "+item.version):
+            release_match = re.search('([a-zA-Z]{3} \d{1,2}?, \d\d\d\d)', release_date_string)
+            if release_match != None:
+                release_date_substr = release_match.group(1)
+                try:
+                    release_date = datetime.strptime(release_date_substr, '%b %d, %Y').date()
+                    item.released = release_date
+                except ValueError as e:
+                     print('ValueError:', e)
+            
+        if releaseString.startswith("End of"):
+            try:
+                release_end_date = datetime.strptime(release_date_string, '%B %d, %Y').date()
+                item.ends = release_end_date
+            except ValueError as e:
+                print('ValueError:', e)
+
 def getEditions(template):
     result = []
 
@@ -67,6 +105,7 @@ def getEditions(template):
         item.stable = True
         item.latest = False
         item.released = ""
+        getReleaseDates(item)
         result.append(item)
     
     # Looking for fresh release
@@ -82,6 +121,7 @@ def getEditions(template):
         item.stable = False
         item.latest = True
         item.released = ""
+        getReleaseDates(item)
         result.append(item)
         
     return result
@@ -90,4 +130,4 @@ if __name__ == "__main__":
     print("LibreOffice Test:")
     libreoffice = getEditions(vergrabber.Softver())
     for x in range(len(libreoffice)):
-        print("Version: "+libreoffice[x].version + " from "+str(libreoffice[x].released))
+        print("Version: "+libreoffice[x].version + " from "+str(libreoffice[x].released)+" to "+str(libreoffice[x].ends))
