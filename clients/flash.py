@@ -32,7 +32,7 @@ def getEditions(template):
 	template.latest = False
 
 	# Looking for releases
-	body = urllib.request.urlopen("http://www.adobe.com/software/flash/about/").read()
+	body = urllib.request.urlopen("https://www.adobe.com/software/flash/about/").read()
 	soup = BeautifulSoup(body, "html5lib")
 	table = soup.find_all('table')[0]
 	rows = table.find_all('tr')[1:]
