@@ -27,7 +27,7 @@ def getEditions(template):
 	h3 = soup.find("h3")
 	#<h3>Latest Stable Release - 1.21 (<span title="07/09/2017 23:00:00 AM">Sunday July 9, 2017</span>)</h3>
 
-	release = h3.get_text().strip().split(" ")[4]
+	release = h3.get_text().strip().split(" ")[-5]
 	tvalue = h3.find('span')['title']
 
 	released = datetime.strptime(tvalue, '%d/%m/%Y %H:%M:%S %p').date()  # date format example: "07/09/2017 23:00:00 AM"
@@ -40,6 +40,7 @@ def getEditions(template):
 
 	# find version
 	item.version = release
+
 	value = re.search('\d+', release)
 	item.edition = value.group()
 
