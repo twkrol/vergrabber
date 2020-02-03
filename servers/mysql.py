@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 # Copyright (c) Tomasz Krol tomek@kingu.pl
 """
-Module to grab actual editions & versions of Nginx HTTP Server
+Module to grab actual editions & versions of MySQL Server
 """
 import copy
 import urllib.request
@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from socket import error as SocketError
 from socket import error
 import errno
-#from software import Softver
+
 debug = False
 product = "MySQL"
 
@@ -21,16 +21,12 @@ def __getMysqlReleaseDate(edition, version):
 	req = urllib.request.Request("https://dev.mysql.com/doc/relnotes/mysql/"+edition+"/en/", None, headers)
 	try:
 		body = urllib.request.urlopen(req).read()
-#	except error as e:
 	except error:
-	# except SocketError as e:
-		# if e.errno != errno.ECONNRESET:
-		# 	raise
-		print("Problem z połączeniem do dev.mysql.com")
+		print("Error connecting to dev.mysql.com")
 		raise
 
 	soup = BeautifulSoup(body, "html5lib")
-	dts = soup.find('dl', {"id": "tocdetail"}).find_all("dt")
+	dts = soup.find('dl', {"class": "toc"}).find_all("dt")
 	for dt in dts:
 		#print("__getMysqlReleaseDate:dt.find:", dt) if debug else None
 
@@ -40,7 +36,7 @@ def __getMysqlReleaseDate(edition, version):
 			if value:
 				return datetime.strptime(value.group(), '%Y-%m-%d').date()
 			else:
-				#czasami jest release ale jeszcze nie ma changeloga z datą, więc wpisujemy dzisiejszą datę releasu
+				#sometimes a release was published but without changelog so we put today instead
 				return datetime.now().date()
 
 
