@@ -19,7 +19,7 @@ def getEditions(template):
 	template.stable = True
 	
 	#Looking for releases
-	response = requests.get(url="https://omahaproxy.appspot.com/all.json")
+	response = requests.get(url="https://omahaproxy.appspot.com/json")
 	data = response.json()
 	
 	#Looking releases
