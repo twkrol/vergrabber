@@ -11,9 +11,6 @@ import vergrabber
 from bs4 import BeautifulSoup
 from datetime import datetime, date
 
-
-from datetime import datetime, date
-
 product = "LibreOffice"
 user_agent_stable = 'LibreOffice 6.2.1 (c9944f7-48b7ff5-0507789-54a4c8a-8b242a8; Windows; X86_64; )'
 user_agent_fresh = 'LibreOffice 6.3.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X86_64; )'

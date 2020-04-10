@@ -15,13 +15,14 @@ user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/
 
 def getReleaseDate(version):
 	# Looking for release date
-	url = "https://www.mozilla.org/en-US/thunderbird/" + version + "/releasenotes/"
+	url = "https://www.thunderbird.net/en-US/thunderbird/" + version + "/releasenotes/"
 	request = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent})
 
 	body = urllib.request.urlopen(request).read()
 	soup = BeautifulSoup(body, "html5lib")
-	value = soup.find('article', {'id': 'main-content'}).find_next('h2').get_text()
-	value = value[value.rfind(' on ')+4:]
+	# value = soup.find('article', {'id': 'main-content'}).find_next('h2').get_text()
+	value = soup.find(id='masthead').find_all('section')[1].find('p').text
+	value = value[value.rfind(' on ')+4:].strip()
 	result = datetime.strptime(value, '%B %d, %Y').date()  # date format example: March 7, 2017
 	return result
 
@@ -35,13 +36,14 @@ def getEditions(template):
 	template.latest = False
 
 	# Looking for releases
-	url = "https://www.mozilla.org/en-US/thunderbird/releases/"
+	url = "https://www.thunderbird.net/en-US/thunderbird/releases/"
 	request = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent})
 
 	body = urllib.request.urlopen(request).read()
 	soup = BeautifulSoup(body, "html5lib")
-	li = soup.find(id="main-content").find_next("ol").find_next("ol").find_all("li")[-1]
-	release = li.get_text()
+	items = soup.main.find_all("section")[2].aside.aside.find_all("a")
+
+	release = items[-1].text
 
 	# Getting release data
 	item = copy.copy(template)  # copy of Softver object
