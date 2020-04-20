@@ -71,7 +71,7 @@ def getEditions(template):
 		# get table cells then use appropriate cell	containg the end of support date
 		found = re.findall(r'<td>(.*?)</td>', extracted)
 		if len(found)>0:
-			item.ends = datetime.strptime(found[2], '%B %d, %Y').date()
+			item.ends = datetime.strptime(found[2].strip('*'), '%B %d, %Y').date()
 
 	return result
 
