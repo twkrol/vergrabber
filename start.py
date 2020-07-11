@@ -17,7 +17,7 @@ __author_email__ = 'vergrabber@kingu.pl'
 debug = False
 debug_module = None
 # debug = True
-# debug_module = 'windows'
+# debug_module = 'acrobatreader'
 
 def dumper(obj):
     if isinstance(obj, date) or isinstance(obj, datetime):

@@ -34,7 +34,7 @@ def getEditions(template):
 		rows = tables[x].find_all('tr')[1:]
 		# current version is always in the first row
 		cols = rows[0].find_all('td')
-		release_date_string = cols[0].get_text()
+		release_date_string = cols[0].get_text().replace('\n','')
 		release = cols[1].get_text()
 		# now it should look like this:
 		# Date: Feb 21,2019
@@ -48,13 +48,18 @@ def getEditions(template):
 			release_match = re.search('\d\d\.\d\.\d+', release)
 			release = release_match.group(0)
 		
+		# release_date_string = release_date_string.replace('\n','')
 		# convert date string to datetime object
+		# print(release_date_string)
 		try:
-			release_date = datetime.strptime(release_date_string, '%b %d,%Y').date()
+			release_date = datetime.strptime(release_date_string, '%b %d, %Y').date()
 		except ValueError as e:
 			try:
-				release_date = datetime.strptime(release_date_string, '%b %d, %Y').date()
+				release_date = datetime.strptime(release_date_string, '%B %d, %Y').date()
 			except ValueError as e:
+				# try:
+				# 	release_date = datetime.strptime(release_date_string, '%b %d,%Y').date()
+				# except ValueError as e:
 				print('ValueError:', e)
 		
 		# now it should look like this:
