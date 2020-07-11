@@ -10,14 +10,14 @@ import json
 from datetime import datetime, date
 import vergrabber
 
-__version__ = '3.3.5'
+__version__ = '3.4.0'
 __author__ = 'Tomasz Krol'
 __author_email__ = 'vergrabber@kingu.pl'
 
 debug = False
 debug_module = None
 # debug = True
-# debug_module = 'acrobatreader'
+# debug_module = 'symfony'
 
 def dumper(obj):
     if isinstance(obj, date) or isinstance(obj, datetime):

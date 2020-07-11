@@ -23,11 +23,10 @@ def getEditions(template):
 	for edition in editions:
 		item = copy.copy(template)											#copy of Softver object
 		item.stable = True
-		# item.edition = edition.replace("_",".")
-		item.edition = edition
+		item.edition = editions[edition]
 
 		#Looking for detailed edition information from custom url
-		response = requests.get(url="https://symfony.com/releases/"+ editions[item.edition] +".json")
+		response = requests.get(url="https://symfony.com/releases/"+ item.edition +".json")
 		data = response.json()
 
 		#Skip development versions
