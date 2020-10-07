@@ -20,10 +20,10 @@ def getEditions(template):
 	response = requests.get(url="https://symfony.com/releases.json")
 	editions = response.json()["supported_versions"]
 	
-	for edition in editions:
+	for edition in list(editions):
 		item = copy.copy(template)											#copy of Softver object
 		item.stable = True
-		item.edition = editions[edition]
+		item.edition = edition
 
 		#Looking for detailed edition information from custom url
 		response = requests.get(url="https://symfony.com/releases/"+ item.edition +".json")
