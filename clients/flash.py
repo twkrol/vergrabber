@@ -3,6 +3,7 @@
 """
 Module to grab actual editions & versions of Mozilla Firefox
 """
+import logging
 import copy
 import urllib.request
 import re
@@ -16,11 +17,16 @@ def getReleaseDate(edition):
 	# Looking for release date
 	url = "https://helpx.adobe.com/flash-player/release-note/fp_" + edition + "_air_" + edition + "_release_notes.html"
 	body = urllib.request.urlopen(url).read()
-	#print(url)
+	logging.debug(url)
 	soup = BeautifulSoup(body, "html5lib")
-	value = soup.find('div', {'class': 'text parbase section'}).find_next('div').find_next('p').find_next('p').find_next('strong').get_text()
-	result = datetime.strptime(value, '%B %d, %Y').date()  # date format example: March 7, 2017
-	return result
+	tree = soup.find('div', {'class': 'text parbase section'})
+	for leaf in tree:
+		value = leaf.find_next('div').find_next('p').find_next('p').find_next('strong').get_text()
+		try:
+			result = datetime.strptime(value, '%B %d, %Y').date()  # date format example: March 7, 2017
+			return result
+		except:
+			continue
 
 
 def getEditions(template):

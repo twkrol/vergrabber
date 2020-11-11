@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: Vergrabber API
+  contact:
+    name: Tomasz Król
+    email: vergrabber@kingu.pl
+  version: 1.1.0
+servers:
+  - url: https://vergrabber.kingu.pl
+paths:
+  /vergrabber.json:
+    get:
+      description: 'Returns all version definitions and signature information'
+      responses:
+        '200':
+          description: 'A tree of version definitions'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Root'
+components:
+  schemas:
+    Root:
+      type: object
+      properties:
+        signature:
+          $ref: '#/components/schemas/Signature'
+        server:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Application'
+        client:
+          type: array
+          items:
+            type: array
+            $ref: '#/components/schemas/Application'
+        latest:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Latest'
+    Signature:
+      type: object
+      properties:
+        app:
+          type: string
+        version:
+          type: string
+        author: 
+          type: string
+        notice:
+          type: string
+        updated:
+          type: string
+    Version:
+      type: object
+      properties:
+        product:
+          type: string
+        edition:
+          type: string
+        version:
+          type: string
+        stable:
+          type: boolean
+        latest:
+          type: boolean
+        released:
+          type: string
+        ends:
+          type: string
+        lts:
+          type: boolean
+    Latest:
+        type: object
+        properties:
+          server:
+            type: array
+            $ref: '#/components/schemas/Application'    
+          client:
+            type: array
+            $ref: '#/components/schemas/Application'    
+    Application:
+        type: array
+        items:
+            type: object
+            $ref: '#/components/schemas/Edition' 
+    Edition:
+        type: array
+        items:
+            type: object
+            $ref: '#/components/schemas/Version'             
