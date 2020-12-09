@@ -14,7 +14,7 @@ from logging import critical, error, info, warning, debug
 import argparse
 import vergrabber
 
-__version__ = '4.0.0'
+__version__ = '4.0.1'
 __author__ = 'Tomasz Krol'
 __author_email__ = 'vergrabber@kingu.pl'
 
