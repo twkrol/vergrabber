@@ -29,7 +29,12 @@ def getEditions(template):
 	
 	# Get all tables from page
 	tables = soup.find_all('table')
-	for x in range(len(tables)):
+	# only consider first three (others are discontinued versions)
+	if len(tables) < 3:
+		lenTables = len(tables)
+	else:
+		lenTables = 3
+	for x in range(lenTables):
 		# get all rows (without header)
 		rows = tables[x].find_all('tr')[1:]
 		# current version is always in the first row
@@ -37,8 +42,8 @@ def getEditions(template):
 		release_date_string = cols[0].get_text().replace('\n','')
 		release = cols[1].get_text()
 		# now it should look like this:
-		# Date: Feb 21,2019
-		# Version: DC Feb 2019 (19.010.20098)
+		# release_date_string: Feb 21, 2020
+		# release: DC Feb 2020 (20.010.20098)
 		
 		# convert date and version:
 		release_match = re.search('\d\d\.\d\d\d.\d+', release)
@@ -48,44 +53,36 @@ def getEditions(template):
 			release_match = re.search('\d\d\.\d\.\d+', release)
 			release = release_match.group(0)
 		
-		# release_date_string = release_date_string.replace('\n','')
-		# convert date string to datetime object
-		# print(release_date_string)
 		try:
 			release_date = datetime.strptime(release_date_string, '%b %d, %Y').date()
 		except ValueError as e:
 			try:
 				release_date = datetime.strptime(release_date_string, '%B %d, %Y').date()
 			except ValueError as e:
-				# try:
-				# 	release_date = datetime.strptime(release_date_string, '%b %d,%Y').date()
-				# except ValueError as e:
 				print('ValueError:', e)
-		
+
 		# now it should look like this:
-		# Date:  2019-02-21
-		# Version: 19.010.20098
+		# release_date:  2019-02-21
 		
 		# Fill vergrabber template
 		item = copy.copy(template)  # copy of Softver object
 		item.version = release
-		if release[0:2] != "11":
-			item.edition = "DC "+release[0:2]
+		if cols[1].get_text()[0:2] == "DC":
+			item.edition = "DC 20" + release[0:2]
 		else:
-			item.edition = "XI"
-		if x == 0:
+			item.edition = "20" + release[0:2]
+			
+		# assume latest is only first and second table (DC/non-DC version)
+		if x == 0 or x == 1:
 			item.latest = True
 		else:
 			item.latest = False
+		
 		item.released = release_date
-
-		# ignore "XI" version, since it is not supported anymore
-		if item.edition != "XI":
-			result.append(item)
-
+		result.append(item)
 	return result
 
 if __name__ == "__main__":
 	ar = getEditions(vergrabber.Softver())
 	for x in range(len(ar)):
-		print("Version: "+ar[x].version + " from "+str(ar[x].released))
+		print("Edition: "+ar[x].edition+" Version: "+ar[x].version + " from "+str(ar[x].released)+" latest: "+str(ar[x].latest))
