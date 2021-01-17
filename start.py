@@ -4,20 +4,21 @@
 """
 Application to scrap and publish actual software versions of different kinds provided by modules
 """
+import sys
 import os
 import yaml
 import json
 from datetime import datetime, date
+import logging
+from logging import critical, error, info, warning, debug
+import argparse
 import vergrabber
 
-__version__ = '3.3.3'
+__version__ = '4.2.0'
 __author__ = 'Tomasz Krol'
 __author_email__ = 'vergrabber@kingu.pl'
 
-debug = False
 debug_module = None
-# debug = True
-# debug_module = 'mysql'
 
 def dumper(obj):
     if isinstance(obj, date) or isinstance(obj, datetime):
@@ -49,14 +50,15 @@ def applyLatest(result, branch, vergrabber):
             result[branch][mod.product] = entry
 
 
-# Application starts here
-if __name__ == "__main__":
+def main():
+    print(f"Vergrabber, a software version grabber {__version__}")
+    print(f"(C) 2017-2020 by {__author__}, {__author_email__}\n")
 
-    print("Vergrabber, a software version grabber", __version__)
-    print("(C) 2017-2019 by", __author__, __author_email__, "\n")
     started = datetime.now()
-    print("* STARTED @ %s" % started)
-    print("- loading configuration from config.yaml")
+    info(f"* STARTED @ {started}")
+    info(f"- loading configuration from config.yaml")
+
+    # loading configuration
     with open(os.getcwd() + "/config.yaml", 'r') as confile:
         config = yaml.full_load(confile)
 
@@ -82,7 +84,7 @@ if __name__ == "__main__":
         }
     }
 
-    print("- fetching server's modules")
+    info("- fetching server's modules")
 
     # enumerating modules in servers folder
     vergrabber.loadModules('servers', debug_module)
@@ -95,13 +97,11 @@ if __name__ == "__main__":
     applyLatest(result['latest'], 'server', vergrabber)
 
     # debug results
-    if debug:
+    if debug_module:
         for soft in vergrabber.editions:
-            print(soft.product, soft.edition, "version", soft.version, "released", soft.released,
-                  ("Stable" if soft.stable == True else ""),
-                  ("Latest" if soft.latest == True else ""))
+            debug(f"{soft.product}, {soft.edition}, version {soft.version}, released {soft.released} {('Stable' if soft.stable == True else '')} {('Latest' if soft.latest == True else '')}")
 
-    print("- fetching client's modules")
+    info("- fetching client's modules")
 
     # enumerating modules in clients folder
     vergrabber.loadModules('clients', debug_module)
@@ -114,25 +114,49 @@ if __name__ == "__main__":
     applyLatest(result['latest'], 'client', vergrabber)
 
     # show results
-    if debug:
+    if debug_module:
         for soft in vergrabber.editions:
-            print(soft.product, soft.edition, "version", soft.version, "released", soft.released,
-                  ("Stable" if soft.stable == True else ""),
-                  ("Latest" if soft.latest == True else ""))
+            debug(f"{soft.product}, {soft.edition}, version {soft.version}, released {soft.released} {('Stable' if soft.stable == True else '')} {('Latest' if soft.latest == True else '')}")
 
     # show results
-    if debug:
-        print(json.dumps(result, default=dumper, indent=4))
+    debug(json.dumps(result, default=dumper, indent=4))
 
     # save output json file locally
-    print("- saving json result to file", outdir + outfile)
+    info(f"- saving json result to file {outdir + outfile}")
     with open(outdir + outfile, 'w') as out:
         json.dump(result, out, default=dumper, indent=4)
 
     # save output json file to webdir
-    print("- publishing json result file to", webdir)
+    info(f"- publishing json result file to {webdir}")
     with open(webdir + outfile, 'w') as out:
         json.dump(result, out, default=dumper, indent=4)
 
     finished = datetime.now()
     print("* FINISHED @ %s took %s" % (datetime.now(), finished-started))
+    
+
+def parse_arguments():
+    """Read arguments from commandline."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", metavar='logging verbosity', default=3, type=int, help='Verbosity of logging: 0-critical, 1-error, 2-warning, 3-info, 4-debug')
+    parser.add_argument("-m", metavar='module to debug', help='Setting a module to debug automatically implies verbosity level debug')
+    args = parser.parse_args()
+    
+    return args
+
+# Application starts here
+if __name__ == "__main__":
+    args = parse_arguments()
+
+    if args.m:
+        # set module to debug (this will be the only loaded module)
+        debug_module = args.m
+    
+        # set default logging to DEBUG if module given and logging verbosity not set
+        args.v = 4    
+
+    verbose = {0: logging.CRITICAL, 1: logging.ERROR, 2: logging.WARNING, 3: logging.INFO, 4: logging.DEBUG}
+    logging.basicConfig(format='%(message)s', level=verbose[args.v], stream=sys.stdout)
+    # logging.basicConfig(format='%(message)s', level=logging.INFO, stream=sys.stdout)
+
+    main()

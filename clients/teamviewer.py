@@ -8,20 +8,26 @@ import urllib.request
 import re
 from datetime import datetime, date
 from bs4 import BeautifulSoup
+import logging
+from logging import critical, error, info, warning, debug
 
 product = "TeamViewer"
-user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46'
+headers = {'User-agent': 'Mozilla/5.0'}	#needed for anti-script scrapping protection
 
 
 def getReleaseDate(edition):
 	# Looking for release date
 
 	# Looking for release's changelog url
-	url = "https://community.teamviewer.com/t5/forums/filteredbylabelpage/board-id/Change_Logs_EN/label-name/windows"
-	body = urllib.request.urlopen(url).read()
+	url = "https://community.teamviewer.com/English/categories/change-logs-en"
+	req = urllib.request.Request(url, None, headers)
+
+	body = urllib.request.urlopen(req).read()
 
 	soup = BeautifulSoup(body, "html5lib")
-	chlogurl = soup.find("a", href=re.compile(edition))
+	chlogurl = soup.find("a", href=re.compile(edition), string=f"[Windows] v{edition} - Change Log")
+	
+	debug(f"chlogurl: {chlogurl}")
 
 	# Looking for release date in changelog
 	try:
@@ -48,10 +54,9 @@ def getEditions(template):
 
 	# Looking for releases
 	url = "https://www.teamviewer.com/en/download/windows/"
-	request = urllib.request.Request(url, data=None, headers={'User-Agent': user_agent})
+	request = urllib.request.Request(url, data=None, headers=headers)
 
 	body = urllib.request.urlopen(request).read()
-	# body = urllib.request.urlopen("https://www.teamviewer.com/en/download/windows/").read()
 	soup = BeautifulSoup(body, "html5lib")
 
 	#Windows
@@ -59,6 +64,8 @@ def getEditions(template):
 	found = soup.find(string=re.compile('\s\d+\.\d+\.\d+'))
 	release = found.lstrip().rstrip()
 	
+	debug(f"release: {release}")
+
 	# Getting release data
 	item = copy.copy(template)  # copy of Softver object
 

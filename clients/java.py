@@ -6,6 +6,7 @@ Module to grab actual editions & versions of Mozilla Firefox
 import copy
 import urllib.request
 import re
+import json
 from datetime import datetime, date
 from bs4 import BeautifulSoup
 
@@ -14,10 +15,19 @@ product = "Java"
 
 def getReleaseDate():
 	# Looking for release date
-	body = urllib.request.urlopen("https://www.java.com/en/download/faq/release_dates.xml").read()
+	# url = "https://www.java.com/en/download/faq/release_dates.xml"
+	
+	#grab data
+	url = "https://www.java.com/content/published/api/v1.1/items/.by.slug/release_dates.html/variations/language/en?fields=all&slug=release_dates.html&channelToken=1f7d2611846d4457b213dfc9048724dc"
+	data = urllib.request.urlopen(url).read()
+	jsonData = json.loads(data.decode('utf-8'))
+	body = jsonData['fields']['answer'][0]
+
+	#decode data
 	soup = BeautifulSoup(body, "html5lib")
-	value = soup.find('table', {'class': 'lined'}).find_next('tr').find_next('td').find_next('td').get_text()
+	value = soup.find('table', {'class': 'lined'}).find_next('tr').find_next('tr').find_next('td').find_next('td').get_text()
 	result = datetime.strptime(value, '%B %d, %Y').date()  # date format example: March 7, 2017
+	
 	return result
 
 
@@ -31,6 +41,7 @@ def getEditions(template):
 
 	# Looking for releases
 	body = urllib.request.urlopen("http://javadl-esd-secure.oracle.com/update/baseline.version").read()
+
 	version = str(body, 'utf-8').split('\n', 1)[1]
 	regex = re.search('(\d+)\.(\d+)\.(\d+)_(\d+)', version)
 

@@ -10,12 +10,14 @@ import urllib.request
 import vergrabber
 from bs4 import BeautifulSoup
 from datetime import datetime, date
+import logging
+from logging import critical, error, info, warning, debug
 
 product = "LibreOffice"
 user_agent_stable = 'LibreOffice 6.2.1 (c9944f7-48b7ff5-0507789-54a4c8a-8b242a8; Windows; X86_64; )'
 user_agent_fresh = 'LibreOffice 6.3.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X86_64; )'
 url = 'http://update.libreoffice.org/check.php'
-releases_url = "https://wiki.documentfoundation.org/ReleasePlan/"
+releases_url = "https://wiki.documentfoundation.org/ReleasePlan"
 
 """
 get libreoffice webservice output manually:
@@ -49,7 +51,8 @@ curl -A "LibreOffice 6.3.1 (7074905676c47b82bbcfbea1aeefc84afe1c50e1; Windows; X
 
 def getReleaseDates(item):
     # Looking for release start and end dates
-    body = urllib.request.urlopen(releases_url+item.edition).read()
+    body = urllib.request.urlopen(releases_url + "/" + item.edition).read()
+    debug(f"Looking for release date for {item.version}, requesting url: {releases_url}/{item.edition}")
     soup = BeautifulSoup(body, "html5lib")
 
     # Get all tables from page
@@ -60,15 +63,18 @@ def getReleaseDates(item):
         # release version info is always in last row
         releaseRow = rows[len(rows)-1]
         ths = releaseRow.find_all('th')
-        releaseString = ths[0].get_text()
+        releaseString = ths[0].get_text().strip(' \t\r\n').replace('  ',' ')    #apply some text clearance
         tds = releaseRow.find_all('td')
         release_date_string = tds[0].get_text()
         
         #releaseString.
-        if releaseString.startswith("Release "+item.version):
+        debug(f"testing for {releaseString} == Release {item.version}")
+        if releaseString.startswith(f"Release {item.version}"):
+            debug(f"Looking for date match in {release_date_string}")
             release_match = re.search('([a-zA-Z]{3} \d{1,2}?, \d\d\d\d)', release_date_string)
             if release_match != None:
                 release_date_substr = release_match.group(1)
+                debug(f"Found match: {release_date_substr}")
                 try:
                     release_date = datetime.strptime(release_date_substr, '%b %d, %Y').date()
                     item.released = release_date
@@ -76,10 +82,12 @@ def getReleaseDates(item):
                      print('ValueError:', e)
             
         if releaseString.startswith("End of"):
+            debug(f"Looking for End of life date match in {release_date_string}")
             try:
-                release_end_date = datetime.strptime(release_date_string, '%B %d, %Y').date()
+                release_end_date = datetime.strptime(release_date_string.strip(' \t\r\n'), '%B %d, %Y').date()
                 item.ends = release_end_date
             except ValueError as e:
+                # None
                 print('ValueError:', e)
 
 def getEditions(template):
