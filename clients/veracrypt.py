@@ -5,6 +5,7 @@ Module to grab actual editions & versions of Mozilla Firefox
 """
 import copy
 import urllib.request
+from urllib.error import URLError
 import re
 from datetime import datetime, date
 from bs4 import BeautifulSoup
@@ -21,9 +22,12 @@ def getEditions(template):
 	template.latest = False
 
 	# Looking for releases
-	body = urllib.request.urlopen("https://www.veracrypt.fr/en/Downloads.html").read()
-	soup = BeautifulSoup(body, "html5lib")
+	try:
+		body = urllib.request.urlopen("https://www.veracrypt.fr/en/Downloads.html").read()
+	except URLError:
+		return result
 
+	soup = BeautifulSoup(body, "html5lib")
 	h3 = soup.find("h3")
 	#<h3>Latest Stable Release - 1.21 (<span title="07/09/2017 23:00:00 AM">Sunday July 9, 2017</span>)</h3>
 

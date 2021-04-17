@@ -22,39 +22,41 @@ def getEditions(template):
     template.latest = True
     
     #Looking for releases
-    body = urllib.request.urlopen("https://raw.githubusercontent.com/MicrosoftDocs/Edge-Enterprise/public/edgeenterprise/microsoft-edge-relnote-stable-channel.md").read()
+    body = urllib.request.urlopen("https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel").read()
     soup = BeautifulSoup(body, "html5lib")
 
-    for i, string in enumerate(soup.get_text().splitlines()):
-        if string.startswith("## Version"):
-            # the version line format is: "## Version 87.0.664.66: December 17"
-            elements = string.split(' ')
+    for item in soup.find_all('h2'):
+        contents = item.get_text()
+        if contents.startswith("Version"):
+            # the version line format is: "Version 89.0.774.48: March 8"
+            elements = contents.split(' ')
             
             # read version skipping the ending ":"
-            releaseVersion = elements[2][:-1]
-            
+            releaseVersion = elements[1][:-1]
+
             # decode date, mind the year which is not provided (yet) and must be guessed
-            releaseDate = datetime.strptime(f"{elements[3]} {elements[4]}, {datetime.now().year}", '%B %d, %Y')
+            releaseDate = datetime.strptime(f"{elements[2]} {elements[3]}, {datetime.now().year}", '%B %d, %Y')
             if releaseDate.date() > datetime.now().date():
-                releaseDate = datetime.strptime(f"{elements[3]} {elements[4]}, {datetime.now().year-1}", '%B %d, %Y')
+                releaseDate = datetime.strptime(f"{elements[2]} {elements[3]}, {datetime.now().year-1}", '%B %d, %Y')
             
+            debug(f"version:{releaseVersion}")
+            debug(f"releaseDate: {releaseDate}")
+
+            item = copy.copy(template)									#copy of Softver object
+
+            #find release date
+            item.released = releaseDate.date()
+
+            #find version
+            value = releaseVersion
+            item.version = value
+            value = re.search('\d+',value)
+            item.edition = value.group()
+            
+            result.append(item)
+            
+            # today, we're not interested in older releases
             break
-    
-    debug(f"version:{releaseVersion}")
-    debug(f"releaseDate: {releaseDate}")
-
-    item = copy.copy(template)									#copy of Softver object
-
-    #find release date
-    item.released = releaseDate.date()
-
-    #find version
-    value = releaseVersion
-    item.version = value
-    value = re.search('\d+\.\d+',value)
-    item.edition = value.group()
-    
-    result.append(item)
 
     return result
 

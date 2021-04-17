@@ -11,10 +11,10 @@ from bs4 import BeautifulSoup
 from socket import error as SocketError
 from socket import error
 import errno
+import logging
+from logging import critical, error, info, warning, debug
 
-debug = False
 product = "MySQL"
-
 headers = {'User-agent': 'Mozilla/5.0'}	#needed for anti-script scrapping protection
 
 def __getMysqlReleaseDate(edition, version):
@@ -22,7 +22,7 @@ def __getMysqlReleaseDate(edition, version):
 	try:
 		body = urllib.request.urlopen(req).read()
 	except error:
-		print("Error connecting to dev.mysql.com")
+		error("Error connecting to dev.mysql.com")
 		raise
 
 	soup = BeautifulSoup(body, "html5lib")
@@ -53,38 +53,39 @@ def getEditions(template):
 	body = urllib.request.urlopen(req).read()
 	soup = BeautifulSoup(body, "html5lib")
 	h1 = soup.find('div', {"id":"ga"}).find("h1").get_text()
-	print("ver string:", h1) if debug else None
+	debug(f"ver string: {h1}")
 
 	item = copy.copy(template)									#copy of Softver object
 	item.version = re.search('\d+\.\d+\.\d+', h1).group()
 	item.edition = re.search('\d+\.\d+',item.version).group()
-	print("version:", item.version, " edition:", item.edition) if debug else None
+	debug(f"version: {item.version}, edition: {item.edition}")
 
 	item.latest = True
 	item.released = __getMysqlReleaseDate(item.edition, item.version)
-	print("item.released:", item.released) if debug else None
+	debug(f"item.released: {item.released}")
 
 	result.append(item)
 
-	#Find link to other GA versions
+	#Find link previous GA version
 	ga_link = soup.find('a', {"class":"version-link-ga"})['href']
 	req = urllib.request.Request("https://dev.mysql.com"+ga_link, None, headers)
+	debug(f"ga req url: https://dev.mysql.com{ga_link}")
 	body = urllib.request.urlopen(req).read()
 	soup = BeautifulSoup(body, "html5lib")
-	options = soup.find('select', {"id":"version-ga"}).find_all('option')
-	for option in options:
-		version = option.get_text()
+	h1 = soup.find('div', {"id":"ga"}).find("h1").get_text()
+	debug(f"ga ver string: {h1}")
+
+	item = copy.copy(template)									#copy of Softver object
+	item.version = re.search('\d+\.\d+\.\d+', h1).group()
+	item.edition = re.search('\d+\.\d+',item.version).group()
+	debug(f"ga version: {item.version}, edition: {item.edition}")
+
+	item.latest = False
+	item.released = __getMysqlReleaseDate(item.edition, item.version)
+	debug(f"ga item.released: {item.released}")
+
+	result.append(item)
 	
-		item = copy.copy(template)									#copy of Softver object
-		item.version = re.search('\d+\.\d+\.\d+', version).group()
-		item.edition = re.search('\d+\.\d+',item.version).group()
-		print("GA version:", item.version, " edition:", item.edition) if debug else None
-
-		item.released = __getMysqlReleaseDate(item.edition, item.version)
-		print("GA item.released:", item.released) if debug else None
-
-		result.append(item)
-		
 	return result
 
 # if __name__ == "__main__":
