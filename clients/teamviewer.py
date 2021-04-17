@@ -61,8 +61,8 @@ def getEditions(template):
 
 	#Windows
 	# Looking for tag with content of 3 digits blocks starting with tab eg. <tab>13.2.2344 ...
-	found = soup.find(string=re.compile('\s\d+\.\d+\.\d+'))
-	release = found.lstrip().rstrip()
+	found = soup.find(string=re.compile('Current version: \d+\.\d+\.\d+'))
+	release = found[16:].lstrip().rstrip()
 	
 	debug(f"release: {release}")
 
