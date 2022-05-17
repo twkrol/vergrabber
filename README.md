@@ -1,4 +1,7 @@
 # vergrabber
+
+## WARNING: This project is not active anymore
+
 Vergrabber is the tool written to grab & publish version information of selected software packages.
 It produces the json file that can be further processed programmaticaly (eg. by automation tools).
 
